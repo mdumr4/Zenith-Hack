@@ -53,9 +53,11 @@ def start_ui():
                 # For now, we assume Plan Mode might be triggered via separate flag 
                 # or just by user hotkey handled by IME -> Backend -> UI State
                 if state.get("show_chat", False):
-                    chat_window.show_chat()
+                    if not chat_window.isVisible():
+                        chat_window.show_chat()
                 elif state.get("hide_chat", False):
-                    chat_window.hide_chat()
+                    if chat_window.isVisible():
+                        chat_window.hide_chat()
                     
         except Exception as e:
             # Fail silently to keep UI responsive, maybe log to stdout for debug
