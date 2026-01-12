@@ -1,0 +1,10 @@
+{
+    "text": "Hello worl",
+    "trigger_key": 32,
+    "app_name": "notepad.exe",
+    "caret": {
+        "x": 1200,
+        "y": 500,
+        "h": 20
+    }
+}
