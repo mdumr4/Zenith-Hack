@@ -1,6 +1,7 @@
 // FraiTextService.cpp
 #include "FraiTextService.h"
 #include "Globals.h"
+#include "BridgeClient.h"
 #include <stdio.h>
 
 // Lifecycle
@@ -102,7 +103,8 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
     sprintf_s(msg, "FraiIME::OnKeyDown: %llu\n", wParam);
     OutputDebugStringA(msg);
 
-    // TODO: Send to Python Bridge here!
+    // Send to Python Bridge
+    BridgeClient::SendAsync((int)wParam, L"");
 
     *pfEaten = FALSE; // Pass through to App
     return S_OK;
