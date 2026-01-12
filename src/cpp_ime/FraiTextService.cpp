@@ -106,6 +106,14 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
     // Send to Python Bridge
     BridgeClient::SendAsync((int)wParam, L"");
 
+    // Logic: If Backspace, check Undo Stack
+    if (wParam == VK_BACK) {
+        if (_undoStack.TryUndo(pic)) {
+            *pfEaten = TRUE; // We handled it (reverted text), so eat the backspace
+            return S_OK;
+        }
+    }
+
     *pfEaten = FALSE; // Pass through to App
     return S_OK;
 }

@@ -2,6 +2,7 @@
 #pragma once
 #include <windows.h>
 #include <msctf.h>
+#include "AutoCorrect.h"
 
 class FraiTextService : public ITfTextInputProcessor,
                         public ITfKeyEventSink {
@@ -34,6 +35,8 @@ private:
     // Helpers
     BOOL _InitKeyEventSink();
     void _UninitKeyEventSink();
+
+    AutoCorrectStack _undoStack;
 };
 
 // Global Helpers (Expected by DllMain)
