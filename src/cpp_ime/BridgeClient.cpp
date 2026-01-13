@@ -52,9 +52,32 @@ std::string DoSendSync(int keyCode, std::wstring context) {
 
     // 4. Build JSON Payload
     std::wstring headers = L"Content-Type: application/json\r\n";
+
+    // Convert context to UTF-8
+    std::string utf8Context = "";
+    if (!context.empty()) {
+        int len = WideCharToMultiByte(CP_UTF8, 0, context.c_str(), -1, NULL, 0, NULL, NULL);
+        if (len > 0) {
+            char* buf = new char[len];
+            WideCharToMultiByte(CP_UTF8, 0, context.c_str(), -1, buf, len, NULL, NULL);
+            utf8Context = buf;
+            delete[] buf;
+            // Remove null terminator if present at end for std::string concatenation
+            if (!utf8Context.empty() && utf8Context.back() == '\0') utf8Context.pop_back();
+        }
+    }
+
+    // Escape JSON (Basic)
+    std::string escapedText = "";
+    for (char c : utf8Context) {
+        if (c == '"') escapedText += "\\\"";
+        else if (c == '\\') escapedText += "\\\\";
+        else escapedText += c;
+    }
+
     std::string jsonBody =
         "{ \"trigger_key\": " + std::to_string(keyCode) +
-        ", \"text\": \"\"" +
+        ", \"text\": \"" + escapedText + "\"" +
         ", \"app_name\": \"notepad.exe\"" +
         ", \"caret\": { \"x\":0, \"y\":0, \"h\":0 } }";
 

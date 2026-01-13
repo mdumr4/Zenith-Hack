@@ -10,6 +10,8 @@ add_library(FraiIME SHARED
     src/cpp_ime/KeyHandler.cpp
     src/cpp_ime/AutoCorrect.cpp
     src/cpp_ime/BridgeClient.cpp
+    src/cpp_ime/EditSession.cpp
+    src/cpp_ime/UndoSession.cpp
     src/cpp_ime/FraiIME.def
 )
 

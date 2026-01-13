@@ -190,6 +190,30 @@ src\cpp_ime\DllMain.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\DllMain.cpp.s
 .PHONY : src\cpp_ime\DllMain.cpp.s
 
+src\cpp_ime\EditSession.obj: src\cpp_ime\EditSession.cpp.obj
+.PHONY : src\cpp_ime\EditSession.obj
+
+# target to build an object file
+src\cpp_ime\EditSession.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\EditSession.cpp.obj
+.PHONY : src\cpp_ime\EditSession.cpp.obj
+
+src\cpp_ime\EditSession.i: src\cpp_ime\EditSession.cpp.i
+.PHONY : src\cpp_ime\EditSession.i
+
+# target to preprocess a source file
+src\cpp_ime\EditSession.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\EditSession.cpp.i
+.PHONY : src\cpp_ime\EditSession.cpp.i
+
+src\cpp_ime\EditSession.s: src\cpp_ime\EditSession.cpp.s
+.PHONY : src\cpp_ime\EditSession.s
+
+# target to generate assembly for a file
+src\cpp_ime\EditSession.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\EditSession.cpp.s
+.PHONY : src\cpp_ime\EditSession.cpp.s
+
 src\cpp_ime\FraiTextService.obj: src\cpp_ime\FraiTextService.cpp.obj
 .PHONY : src\cpp_ime\FraiTextService.obj
 
@@ -238,6 +262,30 @@ src\cpp_ime\KeyHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\KeyHandler.cpp.s
 .PHONY : src\cpp_ime\KeyHandler.cpp.s
 
+src\cpp_ime\UndoSession.obj: src\cpp_ime\UndoSession.cpp.obj
+.PHONY : src\cpp_ime\UndoSession.obj
+
+# target to build an object file
+src\cpp_ime\UndoSession.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.obj
+.PHONY : src\cpp_ime\UndoSession.cpp.obj
+
+src\cpp_ime\UndoSession.i: src\cpp_ime\UndoSession.cpp.i
+.PHONY : src\cpp_ime\UndoSession.i
+
+# target to preprocess a source file
+src\cpp_ime\UndoSession.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.i
+.PHONY : src\cpp_ime\UndoSession.cpp.i
+
+src\cpp_ime\UndoSession.s: src\cpp_ime\UndoSession.cpp.s
+.PHONY : src\cpp_ime\UndoSession.s
+
+# target to generate assembly for a file
+src\cpp_ime\UndoSession.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.s
+.PHONY : src\cpp_ime\UndoSession.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -256,12 +304,18 @@ help:
 	@echo ... src/cpp_ime/DllMain.obj
 	@echo ... src/cpp_ime/DllMain.i
 	@echo ... src/cpp_ime/DllMain.s
+	@echo ... src/cpp_ime/EditSession.obj
+	@echo ... src/cpp_ime/EditSession.i
+	@echo ... src/cpp_ime/EditSession.s
 	@echo ... src/cpp_ime/FraiTextService.obj
 	@echo ... src/cpp_ime/FraiTextService.i
 	@echo ... src/cpp_ime/FraiTextService.s
 	@echo ... src/cpp_ime/KeyHandler.obj
 	@echo ... src/cpp_ime/KeyHandler.i
 	@echo ... src/cpp_ime/KeyHandler.s
+	@echo ... src/cpp_ime/UndoSession.obj
+	@echo ... src/cpp_ime/UndoSession.i
+	@echo ... src/cpp_ime/UndoSession.s
 .PHONY : help
 
 

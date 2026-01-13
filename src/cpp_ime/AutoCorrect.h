@@ -21,7 +21,7 @@ public:
 
     // Try to undo the last action if it was recent
     // Returns TRUE if an undo was performed
-    BOOL TryUndo(ITfContext* pContext);
+    BOOL TryUndo(ITfContext* pContext, TfClientId tid);
 
 private:
     std::vector<UndoAction> _stack;

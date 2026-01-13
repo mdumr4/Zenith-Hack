@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "BridgeClient.h"
 #include "EditSession.h"
+#include "Logger.h"
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -100,28 +101,43 @@ STDMETHODIMP FraiTextService::OnTestKeyDown(ITfContext *pic, WPARAM wParam, LPAR
     return S_OK;
 }
 
+// Helper to get preceding text (context)
+std::wstring _GetTextContext(ITfContext *pic, TfClientId tid) {
+    std::wstring context = L"";
+    if (!pic) return context;
+
+    ReadSession* pReadSession = new ReadSession(pic, &context);
+    HRESULT hr;
+    // Request read-only sync session
+    pic->RequestEditSession(tid, pReadSession, TF_ES_SYNC | TF_ES_READ, &hr);
+    pReadSession->Release();
+
+    return context;
+}
+
+
+
 STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM lParam, BOOL *pfEaten) {
     // DEBUG LOGGING
-    char msg[100];
-    sprintf_s(msg, "FraiIME::OnKeyDown: %llu\n", wParam);
-    OutputDebugStringA(msg);
+    WriteLog("FraiIME::OnKeyDown: %llu\n", wParam);
 
     // Logic: If Backspace, check Undo Stack
     if (wParam == VK_BACK) {
-        if (_undoStack.TryUndo(pic)) {
+        if (_undoStack.TryUndo(pic, _tfClientId)) {
             *pfEaten = TRUE; // We handled it (reverted text), so eat the backspace
             return S_OK;
         }
     }
 
+    // Get Context
+    std::wstring context = _GetTextContext(pic, _tfClientId);
+
     // Synchronous Bridge for "Action Keys" (Space, Enter, Tab)
     if (wParam == VK_SPACE || wParam == VK_RETURN || wParam == VK_TAB) {
-        BridgeAction action = BridgeClient::SendSync((int)wParam, L"");
+        BridgeAction action = BridgeClient::SendSync((int)wParam, context);
 
-        char log[256];
-        sprintf_s(log, "Bridge Response: Action=%s, Text=%s, Range=[%d, %d]\n",
+        WriteLog("Bridge Response: Action=%s, Text=%s, Range=[%d, %d]\n",
             action.type.c_str(), action.text.c_str(), action.rangeStart, action.rangeEnd);
-        OutputDebugStringA(log);
 
         if (action.type == "replace") {
              // Convert text to wstring
@@ -133,7 +149,8 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
              int deleteBack = abs(action.rangeStart);
 
              // Execute Edit Session
-             EditSession* pEditSession = new EditSession(pic, wText, deleteBack);
+             // Pass undo stack to EditSession so it can record the change safely
+             EditSession* pEditSession = new EditSession(pic, wText, deleteBack, &_undoStack);
              HRESULT hrSession;
              pic->RequestEditSession(_tfClientId, pEditSession, TF_ES_SYNC | TF_ES_READWRITE, &hrSession);
              pEditSession->Release();
@@ -141,7 +158,7 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
     }
     else {
         // Async for typing (Ghost Text generation)
-        BridgeClient::SendAsync((int)wParam, L"");
+        BridgeClient::SendAsync((int)wParam, context);
     }
 
     *pfEaten = FALSE; // Pass through to App

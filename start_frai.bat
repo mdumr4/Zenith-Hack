@@ -21,6 +21,15 @@ if %errorLevel% neq 0 (
     echo.
     pause
     exit /b
+    pause
+    exit /b
+)
+
+REM 0.5. Kill Existing Server (Avoid Port Conflicts)
+echo [INFO] checking for existing server on port 18492...
+for /f "tokens=5" %%a in ('netstat -aon ^| find ":18492" ^| find "LISTENING"') do (
+    echo [INFO] Killing old server PID %%a...
+    taskkill /f /pid %%a >nul 2>nul
 )
 
 REM 1. Register the IME DLL (Requires Admin usually, but updated per-user in Win8+)

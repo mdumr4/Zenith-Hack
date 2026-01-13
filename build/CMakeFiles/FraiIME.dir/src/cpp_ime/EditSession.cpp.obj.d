@@ -1,4 +1,6 @@
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/FraiTextService.h
+C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/EditSession.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/msctf.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/rpc.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/windows.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/winapifamily.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/winpackagefamily.h
@@ -186,7 +188,7 @@ C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/pshpack1.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/poppack.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/pshpack1.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/poppack.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/winsmcrd.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/shared/winsmcrd.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/winspool.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/prsht.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/pshpack8.h
@@ -230,11 +232,9 @@ C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/winsvc.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/mcx.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/imm.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/ime_cmodes.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/msctf.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um/comcat.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um/textstor.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um/ctfutb.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/AutoCorrect.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/string
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/yvals_core.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xkeycheck.h
@@ -305,11 +305,7 @@ C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xpolymorphic_allocator.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/tuple
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cctype
+C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/AutoCorrect.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vector
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_bit_utils.hpp
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/Globals.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/initguid.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/guiddef.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/BridgeClient.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/EditSession.h
 C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/Logger.h

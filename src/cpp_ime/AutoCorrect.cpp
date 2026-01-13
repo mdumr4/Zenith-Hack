@@ -1,5 +1,7 @@
 // AutoCorrect.cpp
 #include "AutoCorrect.h"
+#include "UndoSession.h"
+#include <stdio.h>
 
 AutoCorrectStack::AutoCorrectStack() {}
 
@@ -28,14 +30,14 @@ void AutoCorrectStack::Push(ITfRange* pRange, const std::wstring& original) {
     }
 }
 
-BOOL AutoCorrectStack::TryUndo(ITfContext* pContext) {
+BOOL AutoCorrectStack::TryUndo(ITfContext* pContext, TfClientId tid) {
     if (_stack.empty()) return FALSE;
 
     UndoAction& top = _stack.back();
     DWORD now = GetTickCount();
 
-    // 1. Time Check: Must be within 2000ms
-    if (now - top.timestamp > 2000) {
+    // 1. Time Check: Must be within 5000ms (Increased for testing)
+    if (now - top.timestamp > 5000) {
         // Too old, clear stack
         for (auto& a : _stack) a.pRange->Release();
         _stack.clear();
@@ -43,16 +45,12 @@ BOOL AutoCorrectStack::TryUndo(ITfContext* pContext) {
     }
 
     // 2. Perform Undo (Restore original text)
-    ITfEditSession* pEditSession = NULL;
-    // NOTE: In a real TSF implementation, we need an EditSession to write.
-    // For this MVP, we are simulating the logic flow.
-    // pContext->RequestEditSession(...) -> inside session: top.pRange->SetText(..., top.originalText)
+    // Create Undo Session
+    UndoSession* pUndoSession = new UndoSession(pContext, top.pRange, top.originalText);
+    HRESULT hr;
+    pContext->RequestEditSession(tid, pUndoSession, TF_ES_SYNC | TF_ES_READWRITE, &hr);
+    pUndoSession->Release();
 
-    // Simulating success for the MVP architecture proof:
-    // In strict TSF, you cannot SetText outside an EditSession.
-    // We assume the caller (KeyHandler) is wrapping this or we'd implement a full EditSession class.
-
-    // For now, let's just log that we WOULD undo.
     OutputDebugStringA("FraiIME: UNDO TRIGGERED! Reverting text.\n");
 
     // Cleanup
