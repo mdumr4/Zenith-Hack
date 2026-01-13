@@ -1,17 +1,21 @@
 # overlay.py
-from PyQt6.QtWidgets import (QMainWindow, QLabel, QApplication, QFrame, QVBoxLayout, 
+from PyQt6.QtWidgets import (QMainWindow, QLabel, QApplication, QFrame, QVBoxLayout,
                              QHBoxLayout, QGraphicsDropShadowEffect, QWidget, QPushButton)
 from PyQt6.QtCore import Qt, QPoint, QPropertyAnimation, QEasingCurve, QRect, QParallelAnimationGroup, pyqtProperty
 from PyQt6.QtGui import QColor, QFont, QPalette, QCursor
 
-# --- THEME PALETTE ---
-COLOR_ACCENT = "#FF5A1F"       
-COLOR_BG_CARD = "#FFFFFF"      
-COLOR_BORDER_CARD = "#E4E4E7"  
-COLOR_TEXT_MAIN = "#09090B"    
-COLOR_TEXT_SUB = "#71717A"     
-COLOR_KEY_HINT = "#A1A1AA"
-COLOR_BG_BTN_HOVER = "#F4F4F5"
+from ui.theme import get_palette
+
+# Load Dynamic Palette
+P = get_palette()
+
+COLOR_ACCENT = P["COLOR_ACCENT"]
+COLOR_BG_CARD = P["COLOR_BG_CARD"]
+COLOR_BORDER_CARD = P["COLOR_BORDER_CARD"]
+COLOR_TEXT_MAIN = P["COLOR_TEXT_MAIN"]
+COLOR_TEXT_SUB = P["COLOR_TEXT_SUB"]
+COLOR_KEY_HINT = P["COLOR_KEY_HINT"]
+COLOR_BG_BTN_HOVER = P["COLOR_BG_BTN_HOVER"]
 
 class AutotypeCard(QFrame):
     def __init__(self, parent=None):
@@ -19,12 +23,12 @@ class AutotypeCard(QFrame):
         self.setObjectName("AutotypeCard")
         self.setStyleSheet(f"""
             QFrame#AutotypeCard {{
-                background-color: rgba(255, 255, 255, 250);
+                background-color: {COLOR_BG_CARD};
                 border: 1px solid {COLOR_BORDER_CARD};
                 border-radius: 12px;
             }}
         """)
-        
+
         # Soft, Diffuse Shadow
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(24)
@@ -40,20 +44,20 @@ class AutotypeCard(QFrame):
         # --- 1. Header Row: [AUTOTYPE ... Insert X] ---
         header_layout = QHBoxLayout()
         header_layout.setSpacing(10)
-        
+
         # Brand Label
         self.lbl_brand = QLabel("Autotype")
         self.lbl_brand.setStyleSheet(f"color: {COLOR_KEY_HINT}; font-weight: 700; font-size: 10px; font-family: 'Segoe UI'; letter-spacing: 0.8px; text-transform: uppercase;")
         header_layout.addWidget(self.lbl_brand)
-        
+
         header_layout.addStretch()
-        
+
         # Insert Button: Soft Zenith Orange Pill
         self.btn_insert = QPushButton("Insert")
         self.btn_insert.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.btn_insert.setStyleSheet(f"""
             QPushButton {{
-                background-color: {COLOR_ACCENT}; 
+                background-color: {COLOR_ACCENT};
                 color: #FFFFFF;
                 border: none;
                 border-radius: 10px; /* Pill shape */
@@ -66,7 +70,7 @@ class AutotypeCard(QFrame):
                 background-color: #E04812;
             }}
         """)
-        
+
         # Dismiss Button (X): Minimal Grey
         self.btn_dismiss = QPushButton("✕")
         self.btn_dismiss.setFixedSize(20, 20)
@@ -85,10 +89,10 @@ class AutotypeCard(QFrame):
                 color: {COLOR_TEXT_MAIN};
             }}
         """)
-        
+
         header_layout.addWidget(self.btn_insert)
         header_layout.addWidget(self.btn_dismiss)
-        
+
         self.main_layout.addLayout(header_layout)
 
         # --- 2. Suggestion Text ---
@@ -112,13 +116,13 @@ class OverlayWindow(QMainWindow):
 
         self.container = QWidget(self)
         self.setCentralWidget(self.container)
-        
+
         self.card = AutotypeCard(self.container)
         self.card.hide()
-        
+
         self.card.btn_insert.clicked.connect(self.on_insert)
         self.card.btn_dismiss.clicked.connect(self.fade_out)
-        
+
         self._opacity = 0.0
         self.anim_group = QParallelAnimationGroup()
 
@@ -126,7 +130,7 @@ class OverlayWindow(QMainWindow):
     def opacity(self): return self._opacity
     @opacity.setter
     def opacity(self, value): self._opacity = value; self.setWindowOpacity(value)
-    
+
     def on_insert(self):
         # Insert logic placeholder
         self.fade_out()
@@ -135,59 +139,59 @@ class OverlayWindow(QMainWindow):
         if not visible or not text:
             if self.isVisible(): self.fade_out()
             return
-            
+
         self.card.lbl_text.setText(text)
         self.card.adjustSize()
         self.card.show()
-        
+
         padding_y = 12
         screen = QApplication.primaryScreen()
         screen_geo = screen.geometry()
-        
+
         card_w = self.card.width()
-        
+
         final_x = min(x, screen_geo.width() - card_w - 20)
         final_y = y + padding_y
-        
+
         margin = 30
         self.setGeometry(final_x - margin, final_y - margin, self.card.width() + 2*margin, self.card.height() + 2*margin)
         self.card.move(margin, margin)
-        
+
         if not self.isVisible() or self.windowOpacity() == 0:
             self.show()
             self.fade_in()
 
     def fade_in(self):
         self.anim_group.clear()
-        
+
         anim_op = QPropertyAnimation(self, b"opacity")
-        anim_op.setDuration(300) 
+        anim_op.setDuration(300)
         anim_op.setStartValue(0.0)
         anim_op.setEndValue(1.0)
         anim_op.setEasingCurve(QEasingCurve.Type.OutQuad)
-        
+
         start_pos = self.card.pos() + QPoint(0, 15)
         end_pos = self.card.pos()
-        
+
         anim_move = QPropertyAnimation(self.card, b"pos")
         anim_move.setDuration(400)
         anim_move.setStartValue(start_pos)
         anim_move.setEndValue(end_pos)
         anim_move.setEasingCurve(QEasingCurve.Type.OutCubic)
-        
+
         self.anim_group.addAnimation(anim_op)
         self.anim_group.addAnimation(anim_move)
         self.anim_group.start()
 
     def fade_out(self):
         self.anim_group.clear()
-        
+
         anim_op = QPropertyAnimation(self, b"opacity")
         anim_op.setDuration(200)
         anim_op.setStartValue(self.windowOpacity())
         anim_op.setEndValue(0.0)
         anim_op.setEasingCurve(QEasingCurve.Type.InQuad)
-        
+
         anim_op.finished.connect(self.hide)
         self.anim_group.addAnimation(anim_op)
         self.anim_group.start()
