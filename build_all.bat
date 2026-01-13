@@ -73,6 +73,17 @@ if %errorlevel% neq 0 (
 )
 
 echo [INFO] Compiling...
+
+REM CRITICAL: Kill Text Services BEFORE linking to release file lock on FraiIME.dll
+taskkill /F /IM ctfmon.exe >nul 2>nul
+timeout /t 1 /nobreak >nul
+
+REM HACK: Unlock trick - Rename existing DLL to garbage so Linker can create a new one
+if exist FraiIME.dll (
+    echo [INFO] Moving locked DLL out of the way...
+    move /Y FraiIME.dll FraiIME.trash-%random% >nul 2>nul
+)
+
 "!CMAKE_EXE!" --build .
 if %errorlevel% neq 0 (
     echo [ERROR] Compilation failed.
@@ -84,6 +95,11 @@ if %errorlevel% neq 0 (
 echo.
 echo [SUCCESS] Build Complete!
 if not exist "Release" mkdir Release
+
+REM FORCE UNLOCK: Kill Text Services to release DLL handle
+taskkill /F /IM ctfmon.exe >nul 2>nul
+timeout /t 1 /nobreak >nul
+
 copy FraiIME.dll Release\FraiIME.dll >nul
 echo DLL Location: %CD%\Release\FraiIME.dll
 cd ..

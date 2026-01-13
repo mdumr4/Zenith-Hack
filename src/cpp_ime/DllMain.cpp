@@ -119,6 +119,16 @@ STDAPI DllRegisterServer() {
         }
         pProfiles->Release();
     }
+
+    // Category Registration (CRITICAL for visibility in Language Bar)
+    ITfCategoryMgr *pCategoryMgr;
+    hr = CoCreateInstance(CLSID_TF_CategoryMgr, NULL, CLSCTX_INPROC_SERVER, IID_ITfCategoryMgr, (void**)&pCategoryMgr);
+    if (SUCCEEDED(hr)) {
+        pCategoryMgr->RegisterCategory(CLSID_FraiIME, GUID_TFCAT_TIP_KEYBOARD, CLSID_FraiIME);
+        pCategoryMgr->RegisterCategory(CLSID_FraiIME, GUID_TFCAT_TIP_KEYBOARD, GUID_FraiProfile);
+        pCategoryMgr->Release();
+    }
+
     return hr;
 }
 
@@ -129,6 +139,15 @@ STDAPI DllUnregisterServer() {
     if (SUCCEEDED(hr)) {
         pProfiles->Unregister(CLSID_FraiIME);
         pProfiles->Release();
+    }
+
+    // Unregister Category
+    ITfCategoryMgr *pCategoryMgr;
+    hr = CoCreateInstance(CLSID_TF_CategoryMgr, NULL, CLSCTX_INPROC_SERVER, IID_ITfCategoryMgr, (void**)&pCategoryMgr);
+    if (SUCCEEDED(hr)) {
+        pCategoryMgr->UnregisterCategory(CLSID_FraiIME, GUID_TFCAT_TIP_KEYBOARD, CLSID_FraiIME);
+        pCategoryMgr->UnregisterCategory(CLSID_FraiIME, GUID_TFCAT_TIP_KEYBOARD, GUID_FraiProfile);
+        pCategoryMgr->Release();
     }
 
     // Regular COM Unreg (Skipped implementation for brevity, typically deletes Registry keys)

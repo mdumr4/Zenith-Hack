@@ -1,6 +1,7 @@
 // Globals.h
 #pragma once
 #include <windows.h>
+#include <msctf.h>
 #include <initguid.h>
 
 // {B955DEE6-9285-48AA-85A2-06760B8E1B9A}

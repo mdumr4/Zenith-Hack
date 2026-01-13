@@ -1,6 +1,6 @@
-LIBRARY "FraiIME"
-
+LIBRARY FraiIME
 EXPORTS
-    DllMain private
-    DllRegisterServer private
-    DllUnregisterServer private
+    DllGetClassObject   PRIVATE
+    DllCanUnloadNow     PRIVATE
+    DllRegisterServer   PRIVATE
+    DllUnregisterServer PRIVATE

@@ -60,7 +60,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -102,7 +101,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -166,7 +164,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -279,7 +276,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -321,7 +317,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -380,7 +375,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -482,9 +476,6 @@ events:
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/lld-link.com"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/lld-link.exe"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/lld-link"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link"
@@ -532,7 +523,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -589,7 +579,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -631,7 +620,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -688,7 +676,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -748,7 +735,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -805,7 +791,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -847,7 +832,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -910,7 +894,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -974,7 +957,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -1087,7 +1069,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -1189,9 +1170,6 @@ events:
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/lld-link.com"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/lld-link.exe"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/lld-link"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/lld-link"
@@ -1239,7 +1217,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -1299,7 +1276,6 @@ events:
       - "C:/Users/conqu/AppData/Roaming/Python/Scripts/"
       - "C:/Users/conqu/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/conqu/AppData/Local/Programs/Microsoft VS Code/bin/"
-      - "C:/Users/conqu/.antigravity/extensions/ms-python.debugpy-2025.18.0-win32-x64/bundled/scripts/noConfigScripts/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
@@ -1371,7 +1347,6 @@ events:
         - "C:\\Users\\conqu\\AppData\\Roaming\\Python\\Scripts\\"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\conqu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
-        - "c:\\Users\\conqu\\.antigravity\\extensions\\ms-python.debugpy-2025.18.0-win32-x64\\bundled\\scripts\\noConfigScripts"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
@@ -1391,8 +1366,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-3iguck"
-      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-3iguck"
+      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-s7jp7x"
+      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-s7jp7x"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1401,28 +1376,28 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-3iguck'
+        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-s7jp7x'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_d12e5\\fast
-        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_d12e5.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_d12e5.dir\\build
-        Building C object CMakeFiles/cmTC_d12e5.dir/CMakeCCompilerABI.c.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_d12e5.dir\\CMakeCCompilerABI.c.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3iguck" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmE252.tmp
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_c20f4\\fast
+        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_c20f4.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_c20f4.dir\\build
+        Building C object CMakeFiles/cmTC_c20f4.dir/CMakeCCompilerABI.c.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_c20f4.dir\\CMakeCCompilerABI.c.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7jp7x" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmB956.tmp
         CMakeCCompilerABI.c
-        Linking C executable cmTC_d12e5.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_d12e5.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_d12e5.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmE2A1.tmp
+        Linking C executable cmTC_c20f4.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_c20f4.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c20f4.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmB9E4.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_d12e5.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_d12e5.dir/embed.manifest
+        Create CMakeFiles\\cmTC_c20f4.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_c20f4.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_d12e5.dir/manifest.res CMakeFiles\\cmTC_d12e5.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_c20f4.dir/manifest.res CMakeFiles\\cmTC_c20f4.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_d12e5.dir\\objects1.rsp /out:cmTC_d12e5.exe /implib:cmTC_d12e5.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3iguck\\cmTC_d12e5.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_d12e5.dir/intermediate.manifest CMakeFiles\\cmTC_d12e5.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c20f4.dir\\objects1.rsp /out:cmTC_c20f4.exe /implib:cmTC_c20f4.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7jp7x\\cmTC_c20f4.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c20f4.dir/intermediate.manifest CMakeFiles\\cmTC_c20f4.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_d12e5.dir/intermediate.manifest /out:CMakeFiles\\cmTC_d12e5.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_c20f4.dir/intermediate.manifest /out:CMakeFiles\\cmTC_c20f4.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_d12e5.dir/manifest.res CMakeFiles\\cmTC_d12e5.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_c20f4.dir/manifest.res CMakeFiles\\cmTC_c20f4.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_d12e5.dir\\objects1.rsp /out:cmTC_d12e5.exe /implib:cmTC_d12e5.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3iguck\\cmTC_d12e5.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_d12e5.dir/intermediate.manifest CMakeFiles\\cmTC_d12e5.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c20f4.dir\\objects1.rsp /out:cmTC_c20f4.exe /implib:cmTC_c20f4.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-s7jp7x\\cmTC_c20f4.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c20f4.dir/intermediate.manifest CMakeFiles\\cmTC_c20f4.dir/manifest.res
         
       exitCode: 0
   -
@@ -1462,8 +1437,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-0lsmts"
-      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-0lsmts"
+      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-4i2ivf"
+      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-4i2ivf"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1473,28 +1448,28 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-0lsmts'
+        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-4i2ivf'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_17931\\fast
-        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_17931.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_17931.dir\\build
-        Building CXX object CMakeFiles/cmTC_17931.dir/CMakeCXXCompilerABI.cpp.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_17931.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0lsmts" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmE698.tmp
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_731ea\\fast
+        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_731ea.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_731ea.dir\\build
+        Building CXX object CMakeFiles/cmTC_731ea.dir/CMakeCXXCompilerABI.cpp.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_731ea.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4i2ivf" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmBF23.tmp
         CMakeCXXCompilerABI.cpp
-        Linking CXX executable cmTC_17931.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_17931.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_17931.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmE6F6.tmp
+        Linking CXX executable cmTC_731ea.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_731ea.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_731ea.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmBFB0.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_17931.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_17931.dir/embed.manifest
+        Create CMakeFiles\\cmTC_731ea.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_731ea.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_17931.dir/manifest.res CMakeFiles\\cmTC_17931.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_731ea.dir/manifest.res CMakeFiles\\cmTC_731ea.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_17931.dir\\objects1.rsp /out:cmTC_17931.exe /implib:cmTC_17931.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0lsmts\\cmTC_17931.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_17931.dir/intermediate.manifest CMakeFiles\\cmTC_17931.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_731ea.dir\\objects1.rsp /out:cmTC_731ea.exe /implib:cmTC_731ea.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4i2ivf\\cmTC_731ea.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_731ea.dir/intermediate.manifest CMakeFiles\\cmTC_731ea.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_17931.dir/intermediate.manifest /out:CMakeFiles\\cmTC_17931.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_731ea.dir/intermediate.manifest /out:CMakeFiles\\cmTC_731ea.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_17931.dir/manifest.res CMakeFiles\\cmTC_17931.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_731ea.dir/manifest.res CMakeFiles\\cmTC_731ea.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_17931.dir\\objects1.rsp /out:cmTC_17931.exe /implib:cmTC_17931.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0lsmts\\cmTC_17931.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_17931.dir/intermediate.manifest CMakeFiles\\cmTC_17931.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_731ea.dir\\objects1.rsp /out:cmTC_731ea.exe /implib:cmTC_731ea.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4i2ivf\\cmTC_731ea.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_731ea.dir/intermediate.manifest CMakeFiles\\cmTC_731ea.dir/manifest.res
         
       exitCode: 0
   -

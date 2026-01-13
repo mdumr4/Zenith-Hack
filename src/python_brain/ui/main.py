@@ -1,6 +1,10 @@
 # main.py
 import sys
 import os
+
+# Fix Import Path: Add 'src/python_brain' to sys.path so we can import 'ui.overlay'
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtCore import QTimer, Qt
 from ui.overlay import OverlayWindow
@@ -34,7 +38,7 @@ def start_ui():
     # Polling Loop (Decoupled from Backend)
     # Poll every 16ms (~60 FPS) for UI updates
     timer = QTimer()
-    
+
     def update_loop():
         try:
             # TEAM C CONTRACT: Poll /ui/state
@@ -48,9 +52,9 @@ def start_ui():
                         text=state.get("ghost_text", ""),
                         visible=state.get("visible", False)
                     )
-                
+
                 # Check for Chat Window trigger (Future)
-                # For now, we assume Plan Mode might be triggered via separate flag 
+                # For now, we assume Plan Mode might be triggered via separate flag
                 # or just by user hotkey handled by IME -> Backend -> UI State
                 if state.get("show_chat", False):
                     if not chat_window.isVisible():
@@ -58,7 +62,7 @@ def start_ui():
                 elif state.get("hide_chat", False):
                     if chat_window.isVisible():
                         chat_window.hide_chat()
-                    
+
         except Exception as e:
             # Fail silently to keep UI responsive, maybe log to stdout for debug
             print(f"UI Polling Error: {e}")
@@ -68,7 +72,7 @@ def start_ui():
 
     # Show overlay (it starts hidden/transparent but needs to be "active")
     overlay.show()
-    
+
     sys.exit(app.exec())
 
 if __name__ == "__main__":

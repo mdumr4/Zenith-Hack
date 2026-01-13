@@ -10,6 +10,7 @@ add_library(FraiIME SHARED
     src/cpp_ime/KeyHandler.cpp
     src/cpp_ime/AutoCorrect.cpp
     src/cpp_ime/BridgeClient.cpp
+    src/cpp_ime/FraiIME.def
 )
 
 target_link_libraries(FraiIME PRIVATE "ws2_32" "winhttp")
