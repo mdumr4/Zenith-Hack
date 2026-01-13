@@ -15,11 +15,20 @@ if exist "build\Release\FraiIME.dll" (
 
 REM 2. Start Python Brain (Backend)
 echo [INFO] Starting AI Backend (Port 18492)...
-start "FraiBrain" /B python src/python_brain/server.py
+if exist "venv\Scripts\python.exe" (
+    start "FraiBrain" /B venv\Scripts\python.exe src/python_brain/server.py
+) else (
+    echo [WARNING] venv not found. Using global python...
+    start "FraiBrain" /B python src/python_brain/server.py
+)
 
 REM 3. Start Python UI (Overlay)
 echo [INFO] Starting UI Overlay...
-start "FraiUI" /B python src/python_brain/ui/main.py
+if exist "venv\Scripts\python.exe" (
+    start "FraiUI" /B venv\Scripts\python.exe src/python_brain/ui/main.py
+) else (
+    start "FraiUI" /B python src/python_brain/ui/main.py
+)
 
 echo.
 echo [SUCCESS] Frai AI Keyboard is running!

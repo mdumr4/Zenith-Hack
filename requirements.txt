@@ -5,3 +5,5 @@ pyperclip
 chromadb
 openai
 onnxruntime
+pydantic
+requests
