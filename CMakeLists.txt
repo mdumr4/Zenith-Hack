@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(FraiIME)
 
 set(CMAKE_CXX_STANDARD 17)
+add_definitions(-DUNICODE -D_UNICODE)
 
 add_library(FraiIME SHARED
     src/cpp_ime/DllMain.cpp
