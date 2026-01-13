@@ -2,7 +2,10 @@
 #include "FraiTextService.h"
 #include "Globals.h"
 #include "BridgeClient.h"
+#include "EditSession.h"
 #include <stdio.h>
+#include <string>
+#include <vector>
 
 // Lifecycle
 FraiTextService::FraiTextService() : _cRef(1), _pThreadMgr(NULL), _tfClientId(TF_CLIENTID_NULL) {
@@ -103,15 +106,42 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
     sprintf_s(msg, "FraiIME::OnKeyDown: %llu\n", wParam);
     OutputDebugStringA(msg);
 
-    // Send to Python Bridge
-    BridgeClient::SendAsync((int)wParam, L"");
-
     // Logic: If Backspace, check Undo Stack
     if (wParam == VK_BACK) {
         if (_undoStack.TryUndo(pic)) {
             *pfEaten = TRUE; // We handled it (reverted text), so eat the backspace
             return S_OK;
         }
+    }
+
+    // Synchronous Bridge for "Action Keys" (Space, Enter, Tab)
+    if (wParam == VK_SPACE || wParam == VK_RETURN || wParam == VK_TAB) {
+        BridgeAction action = BridgeClient::SendSync((int)wParam, L"");
+
+        char log[256];
+        sprintf_s(log, "Bridge Response: Action=%s, Text=%s, Range=[%d, %d]\n",
+            action.type.c_str(), action.text.c_str(), action.rangeStart, action.rangeEnd);
+        OutputDebugStringA(log);
+
+        if (action.type == "replace") {
+             // Convert text to wstring
+             int size_needed = MultiByteToWideChar(CP_UTF8, 0, &action.text[0], (int)action.text.size(), NULL, 0);
+             std::wstring wText(size_needed, 0);
+             MultiByteToWideChar(CP_UTF8, 0, &action.text[0], (int)action.text.size(), &wText[0], size_needed);
+
+             // Calculate delete count (absolute value of negative start range)
+             int deleteBack = abs(action.rangeStart);
+
+             // Execute Edit Session
+             EditSession* pEditSession = new EditSession(pic, wText, deleteBack);
+             HRESULT hrSession;
+             pic->RequestEditSession(_tfClientId, pEditSession, TF_ES_SYNC | TF_ES_READWRITE, &hrSession);
+             pEditSession->Release();
+        }
+    }
+    else {
+        // Async for typing (Ghost Text generation)
+        BridgeClient::SendAsync((int)wParam, L"");
     }
 
     *pfEaten = FALSE; // Pass through to App
