@@ -1,4 +1,6 @@
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/FraiTextService.h
+C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/LayoutSession.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/msctf.h
+C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/rpc.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/windows.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/winapifamily.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/winpackagefamily.h
@@ -186,7 +188,7 @@ C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/pshpack1.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/poppack.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/pshpack1.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/poppack.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/winsmcrd.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/shared/winsmcrd.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/winspool.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/prsht.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/pshpack8.h
@@ -230,87 +232,6 @@ C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/winsvc.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/mcx.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/imm.h
 C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/ime_cmodes.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//um/msctf.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um/comcat.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um/textstor.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um/ctfutb.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/AutoCorrect.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/string
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/yvals_core.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xkeycheck.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xstring
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_sanitizer_annotate_container.hpp
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/iosfwd
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/yvals.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/crtdbg.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vcruntime_new_debug.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vcruntime_new.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/crtdefs.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/use_ansi.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cstdio
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/stdio.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_wstdio.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_stdio_config.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cstring
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cwchar
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/wchar.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_wconio.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_wdirect.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_wio.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_share.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_wprocess.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_wtime.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/sys/stat.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/sys/types.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/intrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/intrin0.inl.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/setjmp.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/immintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/wmmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/nmmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/smmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/tmmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/pmmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/emmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xmmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/mmintrin.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/malloc.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/zmmintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/ammintrin.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xtr1common
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xutility
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_iter_core.hpp
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/utility
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/initializer_list
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cstddef
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/type_traits
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cstdint
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/stdint.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/climits
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cstdlib
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/math.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_math.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xmemory
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/limits
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cfloat
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/float.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/intrin0.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/new
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/exception
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vcruntime_exception.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/eh.h
-C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_terminate.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xatomic.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xpolymorphic_allocator.h
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/tuple
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/cctype
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vector
-C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_bit_utils.hpp
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/Globals.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/initguid.h
-C:/Program Files (x86)/Windows Kits/10//include/10.0.26100.0//shared/guiddef.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/BridgeClient.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/EditSession.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/LayoutSession.h
-C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/src/cpp_ime/Logger.h

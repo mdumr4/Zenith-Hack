@@ -262,6 +262,30 @@ src\cpp_ime\KeyHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\KeyHandler.cpp.s
 .PHONY : src\cpp_ime\KeyHandler.cpp.s
 
+src\cpp_ime\LayoutSession.obj: src\cpp_ime\LayoutSession.cpp.obj
+.PHONY : src\cpp_ime\LayoutSession.obj
+
+# target to build an object file
+src\cpp_ime\LayoutSession.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj
+.PHONY : src\cpp_ime\LayoutSession.cpp.obj
+
+src\cpp_ime\LayoutSession.i: src\cpp_ime\LayoutSession.cpp.i
+.PHONY : src\cpp_ime\LayoutSession.i
+
+# target to preprocess a source file
+src\cpp_ime\LayoutSession.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.i
+.PHONY : src\cpp_ime\LayoutSession.cpp.i
+
+src\cpp_ime\LayoutSession.s: src\cpp_ime\LayoutSession.cpp.s
+.PHONY : src\cpp_ime\LayoutSession.s
+
+# target to generate assembly for a file
+src\cpp_ime\LayoutSession.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FraiIME.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.s
+.PHONY : src\cpp_ime\LayoutSession.cpp.s
+
 src\cpp_ime\UndoSession.obj: src\cpp_ime\UndoSession.cpp.obj
 .PHONY : src\cpp_ime\UndoSession.obj
 
@@ -313,6 +337,9 @@ help:
 	@echo ... src/cpp_ime/KeyHandler.obj
 	@echo ... src/cpp_ime/KeyHandler.i
 	@echo ... src/cpp_ime/KeyHandler.s
+	@echo ... src/cpp_ime/LayoutSession.obj
+	@echo ... src/cpp_ime/LayoutSession.i
+	@echo ... src/cpp_ime/LayoutSession.s
 	@echo ... src/cpp_ime/UndoSession.obj
 	@echo ... src/cpp_ime/UndoSession.i
 	@echo ... src/cpp_ime/UndoSession.s

@@ -12,6 +12,9 @@ struct BridgeAction {
 
 class BridgeClient {
 public:
-    static void SendAsync(int keyCode, const std::wstring& context);
-    static BridgeAction SendSync(int keyCode, const std::wstring& context);
+    // Send Input Event (Async - Fire and Forget)
+    static void SendAsync(int keyCode, const std::wstring& context, int x, int y, int h);
+
+    // Send Input Event (Sync - Wait for Response)
+    static BridgeAction SendSync(int keyCode, const std::wstring& context, int x, int y, int h);
 };

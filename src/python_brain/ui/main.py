@@ -1,37 +1,36 @@
-# main.py
 import sys
 import os
+import ctypes # For Windows DPI Awareness
 
-# Fix Import Path: Add 'src/python_brain' to sys.path so we can import 'ui.overlay'
+# Fix Import Path: Add 'src/python_brain' to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtCore import QTimer, Qt
-from ui.overlay import OverlayWindow
+# from ui.overlay import OverlayWindow # DISABLED
 from ui.chat_window import ChatWindow
 from ui.client import UIClient
 
-# TEAM C CONTRACT: Disable High DPI Scaling to ensure Physical Pixel coordinates
-# usage. The backend sends physical coordinates, so we must match them 1:1.
-os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "0"
-os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "0"
-os.environ["QT_SCALE_FACTOR"] = "1"
+# START_UI_UPDATES: User requested crisp sizing
+# We remove the old "Disable High DPI" contract and enable it fully.
 
 def start_ui():
-    # Enforce strict coordinate system
-    if hasattr(Qt.ApplicationAttribute, "AA_DisableHighDpiScaling"):
-        QApplication.setAttribute(Qt.ApplicationAttribute.AA_DisableHighDpiScaling)
-    if hasattr(Qt.ApplicationAttribute, "AA_Use96Dpi"):
-        QApplication.setAttribute(Qt.ApplicationAttribute.AA_Use96Dpi)
+    # 1. Windows DPI Awareness (Per-Monitor DPI)
+    try:
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
+    except Exception:
+        pass
 
-    # Double check scaling policy (Qt6) - Must be before QApplication creation
-    if hasattr(QApplication, "setHighDpiScaleFactorRoundingPolicy"):
-        QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.Floor)
+    # 2. Qt High DPI Attributes BEFORE App Creation
+    if hasattr(Qt.ApplicationAttribute, "AA_EnableHighDpiScaling"):
+        QApplication.setAttribute(Qt.ApplicationAttribute.AA_EnableHighDpiScaling)
+    if hasattr(Qt.ApplicationAttribute, "AA_UseHighDpiPixmaps"):
+        QApplication.setAttribute(Qt.ApplicationAttribute.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
 
     # Initialize Components
-    overlay = OverlayWindow()
+    # overlay = OverlayWindow() # DISABLED PER USER REQUEST
     chat_window = ChatWindow()
     client = UIClient()
 
@@ -44,18 +43,11 @@ def start_ui():
             # TEAM C CONTRACT: Poll /ui/state
             state = client.poll_state()
             if state:
-                # Update Overlay
-                if "ghost_text" in state:
-                    overlay.update_state(
-                        x=state.get("x", 0),
-                        y=state.get("y", 0),
-                        text=state.get("ghost_text", ""),
-                        visible=state.get("visible", False)
-                    )
+                # Update Overlay - DISABLED
+                # if "ghost_text" in state:
+                #     overlay.update_state(...)
 
                 # Check for Chat Window trigger (Future)
-                # For now, we assume Plan Mode might be triggered via separate flag
-                # or just by user hotkey handled by IME -> Backend -> UI State
                 if state.get("show_chat", False):
                     if not chat_window.isVisible():
                         chat_window.show_chat()
@@ -71,7 +63,7 @@ def start_ui():
     timer.start(16) # ~60 FPS
 
     # Show overlay (it starts hidden/transparent but needs to be "active")
-    overlay.show()
+    # overlay.show() # DISABLED
 
     sys.exit(app.exec())
 

@@ -201,6 +201,26 @@ CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.s /c "C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\UndoSession.cpp"
 <<
 
+CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj: CMakeFiles\FraiIME.dir\flags.make
+CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj: "C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\LayoutSession.cpp"
+CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj: CMakeFiles\FraiIME.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FraiIME.dir/src/cpp_ime/LayoutSession.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj.d --working-dir="C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\build" --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj /FdCMakeFiles\FraiIME.dir\ /FS -c "C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\LayoutSession.cpp"
+<<
+
+CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FraiIME.dir/src/cpp_ime/LayoutSession.cpp.i"
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe > CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\LayoutSession.cpp"
+<<
+
+CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FraiIME.dir/src/cpp_ime/LayoutSession.cpp.s"
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.s /c "C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\LayoutSession.cpp"
+<<
+
 # Object files for target FraiIME
 FraiIME_OBJECTS = \
 "CMakeFiles\FraiIME.dir\src\cpp_ime\DllMain.cpp.obj" \
@@ -209,7 +229,8 @@ FraiIME_OBJECTS = \
 "CMakeFiles\FraiIME.dir\src\cpp_ime\AutoCorrect.cpp.obj" \
 "CMakeFiles\FraiIME.dir\src\cpp_ime\BridgeClient.cpp.obj" \
 "CMakeFiles\FraiIME.dir\src\cpp_ime\EditSession.cpp.obj" \
-"CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.obj"
+"CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.obj" \
+"CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj"
 
 # External object files for target FraiIME
 FraiIME_EXTERNAL_OBJECTS =
@@ -221,10 +242,11 @@ FraiIME.dll: CMakeFiles\FraiIME.dir\src\cpp_ime\AutoCorrect.cpp.obj
 FraiIME.dll: CMakeFiles\FraiIME.dir\src\cpp_ime\BridgeClient.cpp.obj
 FraiIME.dll: CMakeFiles\FraiIME.dir\src\cpp_ime\EditSession.cpp.obj
 FraiIME.dll: CMakeFiles\FraiIME.dir\src\cpp_ime\UndoSession.cpp.obj
+FraiIME.dll: CMakeFiles\FraiIME.dir\src\cpp_ime\LayoutSession.cpp.obj
 FraiIME.dll: CMakeFiles\FraiIME.dir\build.make
 FraiIME.dll: "C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\FraiIME.def"
 FraiIME.dll: CMakeFiles\FraiIME.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared library FraiIME.dll"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library FraiIME.dll"
 	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_dll --msvc-ver=1944 --intdir=CMakeFiles\FraiIME.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\FraiIME.dir\objects1.rsp @<<
  /out:FraiIME.dll /implib:FraiIME.lib /pdb:"C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\build\FraiIME.pdb" /dll /version:0.0 /machine:x64 /INCREMENTAL:NO /DEF:"C:\Users\conqu\Desktop\Umar\Workspace\Zenith Hack\src\cpp_ime\FraiIME.def"  ws2_32.lib winhttp.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
 <<

@@ -30,3 +30,4 @@ class UIState(BaseModel):
     visible: bool = Field(default=False, description="Whether overlay should be shown")
     x: int = Field(default=0, description="Ghost text X position")
     y: int = Field(default=0, description="Ghost text Y position")
+    h: int = Field(default=0, description="Cursor height")

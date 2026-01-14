@@ -34,7 +34,7 @@ std::string ReadResponse(HINTERNET hRequest) {
     return response;
 }
 
-std::string DoSendSync(int keyCode, std::wstring context) {
+std::string DoSendSync(int keyCode, std::wstring context, int x, int y, int h) {
     HINTERNET hSession = NULL, hConnect = NULL, hRequest = NULL;
     std::string result = "";
 
@@ -51,7 +51,7 @@ std::string DoSendSync(int keyCode, std::wstring context) {
     if (!hRequest) { WinHttpCloseHandle(hConnect); WinHttpCloseHandle(hSession); return ""; }
 
     // 4. Build JSON Payload
-    std::wstring headers = L"Content-Type: application/json\r\n";
+    std::wstring headers = L"Content-Type: application/json\r\nConnection: close\r\n";
 
     // Convert context to UTF-8
     std::string utf8Context = "";
@@ -79,10 +79,12 @@ std::string DoSendSync(int keyCode, std::wstring context) {
         "{ \"trigger_key\": " + std::to_string(keyCode) +
         ", \"text\": \"" + escapedText + "\"" +
         ", \"app_name\": \"notepad.exe\"" +
-        ", \"caret\": { \"x\":0, \"y\":0, \"h\":0 } }";
+        ", \"caret\": { \"x\":" + std::to_string(x) +
+        ", \"y\":" + std::to_string(y) +
+        ", \"h\":" + std::to_string(h) + " } }";
 
     // 5. Send
-    if (WinHttpSendRequest(hRequest, headers.c_str(), headers.length(), (LPVOID)jsonBody.c_str(), jsonBody.length(), jsonBody.length(), 0) &&
+    if (WinHttpSendRequest(hRequest, headers.c_str(), (DWORD)headers.length(), (LPVOID)jsonBody.c_str(), (DWORD)jsonBody.length(), (DWORD)jsonBody.length(), 0) &&
         WinHttpReceiveResponse(hRequest, NULL)) {
 
         // 6. Read Response
@@ -115,8 +117,8 @@ BridgeAction ParseResponse(const std::string& json) {
         }
     }
 
-    // 2. Extract "text": "VALUE" (for replacement)
-    if (action.type == "replace") {
+    // 2. Extract "text": "VALUE" (for replacement or accept)
+    if (action.type == "replace" || action.type == "accept") {
         size_t textKey = json.find("\"text\"");
         if (textKey != std::string::npos) {
             size_t valStart = json.find("\"", textKey + 6);
@@ -165,15 +167,15 @@ BridgeAction ParseResponse(const std::string& json) {
     return action;
 }
 
-void BridgeClient::SendAsync(int keyCode, const std::wstring& context) {
+void BridgeClient::SendAsync(int keyCode, const std::wstring& context, int x, int y, int h) {
     // Fire and forget thread
     std::thread t([=](){
-        DoSendSync(keyCode, context);
+        DoSendSync(keyCode, context, x, y, h);
     });
     t.detach();
 }
 
-BridgeAction BridgeClient::SendSync(int keyCode, const std::wstring& context) {
-    std::string jsonResponse = DoSendSync(keyCode, context);
+BridgeAction BridgeClient::SendSync(int keyCode, const std::wstring& context, int x, int y, int h) {
+    std::string jsonResponse = DoSendSync(keyCode, context, x, y, h);
     return ParseResponse(jsonResponse);
 }

@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/FraiIME.dir/src/cpp_ime/FraiTextService.cpp.obj.d"
   "CMakeFiles/FraiIME.dir/src/cpp_ime/KeyHandler.cpp.obj"
   "CMakeFiles/FraiIME.dir/src/cpp_ime/KeyHandler.cpp.obj.d"
+  "CMakeFiles/FraiIME.dir/src/cpp_ime/LayoutSession.cpp.obj"
+  "CMakeFiles/FraiIME.dir/src/cpp_ime/LayoutSession.cpp.obj.d"
   "CMakeFiles/FraiIME.dir/src/cpp_ime/UndoSession.cpp.obj"
   "CMakeFiles/FraiIME.dir/src/cpp_ime/UndoSession.cpp.obj.d"
   "FraiIME.dll"

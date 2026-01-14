@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "BridgeClient.h"
 #include "EditSession.h"
+#include "LayoutSession.h"
 #include "Logger.h"
 #include <stdio.h>
 #include <string>
@@ -117,6 +118,20 @@ std::wstring _GetTextContext(ITfContext *pic, TfClientId tid) {
 
 
 
+// Helper to get caret position
+CaretPosition _GetCaretPosition(ITfContext *pic, TfClientId tid) {
+    CaretPosition pos = {0, 0, 0};
+    if (!pic) return pos;
+
+    LayoutSession* pLayoutSession = new LayoutSession(pic, tid, &pos);
+    HRESULT hr;
+    // Request read-only sync session
+    pic->RequestEditSession(tid, pLayoutSession, TF_ES_SYNC | TF_ES_READ, &hr);
+    pLayoutSession->Release();
+
+    return pos;
+}
+
 STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM lParam, BOOL *pfEaten) {
     // DEBUG LOGGING
     WriteLog("FraiIME::OnKeyDown: %llu\n", wParam);
@@ -132,14 +147,18 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
     // Get Context
     std::wstring context = _GetTextContext(pic, _tfClientId);
 
+    // Get Caret Position
+    CaretPosition caret = _GetCaretPosition(pic, _tfClientId);
+    WriteLog("Caret: x=%ld, y=%ld, h=%ld\n", caret.x, caret.y, caret.h);
+
     // Synchronous Bridge for "Action Keys" (Space, Enter, Tab)
     if (wParam == VK_SPACE || wParam == VK_RETURN || wParam == VK_TAB) {
-        BridgeAction action = BridgeClient::SendSync((int)wParam, context);
+        BridgeAction action = BridgeClient::SendSync((int)wParam, context, caret.x, caret.y, caret.h);
 
         WriteLog("Bridge Response: Action=%s, Text=%s, Range=[%d, %d]\n",
             action.type.c_str(), action.text.c_str(), action.rangeStart, action.rangeEnd);
 
-        if (action.type == "replace") {
+        if (action.type == "replace" || action.type == "accept") {
              // Convert text to wstring
              int size_needed = MultiByteToWideChar(CP_UTF8, 0, &action.text[0], (int)action.text.size(), NULL, 0);
              std::wstring wText(size_needed, 0);
@@ -154,11 +173,17 @@ STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM l
              HRESULT hrSession;
              pic->RequestEditSession(_tfClientId, pEditSession, TF_ES_SYNC | TF_ES_READWRITE, &hrSession);
              pEditSession->Release();
+
+             // If we accepted ghost text (TAB), we must consume the key so it doesn't insert a real Tab
+             if (action.type == "accept") {
+                 *pfEaten = TRUE;
+                 return S_OK;
+             }
         }
     }
     else {
         // Async for typing (Ghost Text generation)
-        BridgeClient::SendAsync((int)wParam, context);
+        BridgeClient::SendAsync((int)wParam, context, caret.x, caret.y, caret.h);
     }
 
     *pfEaten = FALSE; // Pass through to App

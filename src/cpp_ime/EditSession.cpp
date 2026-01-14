@@ -70,7 +70,7 @@ STDMETHODIMP EditSession::DoEditSession(TfEditCookie ec) {
     }
 
     // Replace text
-    pRange->SetText(ec, 0, _text.c_str(), _text.length());
+    pRange->SetText(ec, 0, _text.c_str(), (LONG)_text.length());
 
     // CRITICAL FIX: Move cursor to end of inserted text
     pRange->Collapse(ec, TF_ANCHOR_END);

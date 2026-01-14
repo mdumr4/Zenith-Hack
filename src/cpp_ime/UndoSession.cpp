@@ -35,7 +35,7 @@ STDMETHODIMP_(ULONG) UndoSession::Release(void) {
 
 STDMETHODIMP UndoSession::DoEditSession(TfEditCookie ec) {
     // Restore text
-    _range->SetText(ec, 0, _text.c_str(), _text.length());
+    _range->SetText(ec, 0, _text.c_str(), (LONG)_text.length());
 
     // Move cursor to end of restored text
     _range->Collapse(ec, TF_ANCHOR_END);

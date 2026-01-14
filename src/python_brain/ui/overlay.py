@@ -1,7 +1,7 @@
 # overlay.py
 from PyQt6.QtWidgets import (QMainWindow, QLabel, QApplication, QFrame, QVBoxLayout,
                              QHBoxLayout, QGraphicsDropShadowEffect, QWidget, QPushButton)
-from PyQt6.QtCore import Qt, QPoint, QPropertyAnimation, QEasingCurve, QRect, QParallelAnimationGroup, pyqtProperty
+from PyQt6.QtCore import Qt, QPoint, QRect
 from PyQt6.QtGui import QColor, QFont, QPalette, QCursor
 
 from ui.theme import get_palette
@@ -17,90 +17,43 @@ COLOR_TEXT_SUB = P["COLOR_TEXT_SUB"]
 COLOR_KEY_HINT = P["COLOR_KEY_HINT"]
 COLOR_BG_BTN_HOVER = P["COLOR_BG_BTN_HOVER"]
 
-class AutotypeCard(QFrame):
+import ctypes
+
+def get_foreground_window_title():
+    hwnd = ctypes.windll.user32.GetForegroundWindow()
+    length = ctypes.windll.user32.GetWindowTextLengthW(hwnd)
+    buff = ctypes.create_unicode_buffer(length + 1)
+    ctypes.windll.user32.GetWindowTextW(hwnd, buff, length + 1)
+    return buff.value
+
+class GhostTextLabel(QLabel):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setObjectName("AutotypeCard")
-        self.setStyleSheet(f"""
-            QFrame#AutotypeCard {{
-                background-color: {COLOR_BG_CARD};
-                border: 1px solid {COLOR_BORDER_CARD};
-                border-radius: 12px;
-            }}
-        """)
+        self.setObjectName("GhostTextLabel")
+        self.setContentsMargins(0, 0, 0, 0)
 
-        # Soft, Diffuse Shadow
-        shadow = QGraphicsDropShadowEffect()
-        shadow.setBlurRadius(24)
-        shadow.setColor(QColor(0, 0, 0, 16))
-        shadow.setOffset(0, 8)
-        self.setGraphicsEffect(shadow)
-
-        # Layout: Vertical (Header | Text)
-        self.main_layout = QVBoxLayout(self)
-        self.main_layout.setContentsMargins(16, 10, 12, 14) # Top, Right, Bottom, Left
-        self.main_layout.setSpacing(8)
-
-        # --- 1. Header Row: [AUTOTYPE ... Insert X] ---
-        header_layout = QHBoxLayout()
-        header_layout.setSpacing(10)
-
-        # Brand Label
-        self.lbl_brand = QLabel("Autotype")
-        self.lbl_brand.setStyleSheet(f"color: {COLOR_KEY_HINT}; font-weight: 700; font-size: 10px; font-family: 'Segoe UI'; letter-spacing: 0.8px; text-transform: uppercase;")
-        header_layout.addWidget(self.lbl_brand)
-
-        header_layout.addStretch()
-
-        # Insert Button: Soft Zenith Orange Pill
-        self.btn_insert = QPushButton("Insert")
-        self.btn_insert.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.btn_insert.setStyleSheet(f"""
-            QPushButton {{
-                background-color: {COLOR_ACCENT};
-                color: #FFFFFF;
-                border: none;
-                border-radius: 10px; /* Pill shape */
-                padding: 4px 12px;
-                font-family: 'Segoe UI';
-                font-size: 12px;
-                font-weight: 600;
-            }}
-            QPushButton:hover {{
-                background-color: #E04812;
-            }}
-        """)
-
-        # Dismiss Button (X): Minimal Grey
-        self.btn_dismiss = QPushButton("✕")
-        self.btn_dismiss.setFixedSize(20, 20)
-        self.btn_dismiss.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
-        self.btn_dismiss.setStyleSheet(f"""
-            QPushButton {{
+        # Fixed stylesheet with Windows font fixes
+        self.setStyleSheet("""
+            QLabel#GhostTextLabel {
+                color: rgba(128, 128, 128, 0.7);
                 background-color: transparent;
-                color: {COLOR_KEY_HINT};
+                padding: 0px;
+                margin: 0px;
                 border: none;
-                border-radius: 10px;
-                font-size: 11px;
-                font-weight: bold;
-            }}
-            QPushButton:hover {{
-                background-color: {COLOR_BG_BTN_HOVER};
-                color: {COLOR_TEXT_MAIN};
-            }}
+                font-family: 'Consolas', 'Courier New', monospace;
+                font-size: 11pt;
+                font-style: italic;
+                font-weight: 400;
+                qproperty-alignment: AlignLeft | AlignVCenter;
+            }
         """)
+        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
 
-        header_layout.addWidget(self.btn_insert)
-        header_layout.addWidget(self.btn_dismiss)
-
-        self.main_layout.addLayout(header_layout)
-
-        # --- 2. Suggestion Text ---
-        # Main focus, below header
-        self.lbl_text = QLabel()
-        self.lbl_text.setWordWrap(True)
-        self.lbl_text.setStyleSheet(f"color: {COLOR_TEXT_MAIN}; font-weight: 400; font-size: 15px; font-family: 'Segoe UI'; line-height: 1.5; padding-top: 2px;")
-        self.main_layout.addWidget(self.lbl_text)
+        # Critical: Disable smoothing/hinting for crisp monospace in overlays
+        font = self.font()
+        font.setHintingPreference(QFont.HintingPreference.PreferNoHinting)
+        font.setStyleStrategy(QFont.StyleStrategy.NoAntialias)
+        self.setFont(font)
 
 class OverlayWindow(QMainWindow):
     def __init__(self):
@@ -117,81 +70,64 @@ class OverlayWindow(QMainWindow):
         self.container = QWidget(self)
         self.setCentralWidget(self.container)
 
-        self.card = AutotypeCard(self.container)
-        self.card.hide()
+        self.label = GhostTextLabel(self.container)
+        self.label.hide()
 
-        self.card.btn_insert.clicked.connect(self.on_insert)
-        self.card.btn_dismiss.clicked.connect(self.fade_out)
+        # Transparent for mouse events -> Pass clicks through
+        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
 
-        self._opacity = 0.0
-        self.anim_group = QParallelAnimationGroup()
+        self.setWindowOpacity(1.0) # Ensure visible by default
 
-    @pyqtProperty(float)
-    def opacity(self): return self._opacity
-    @opacity.setter
-    def opacity(self, value): self._opacity = value; self.setWindowOpacity(value)
+        # State Caching to prevent redundant repaints/smearing
+        self.last_state = None
 
-    def on_insert(self):
-        # Insert logic placeholder
-        self.fade_out()
+    def update_state(self, x: int, y: int, h: int, text: str, visible: bool):
+        # Focus Check DISABLED for robustness
+        # if "Notepad" not in get_foreground_window_title(): ...
 
-    def update_state(self, x: int, y: int, text: str, visible: bool):
+        # Optimization: Don't redraw if nothing changed
+        current_state = (x, y, h, text, visible)
+        if self.last_state == current_state:
+            return
+        self.last_state = current_state
+
         if not visible or not text:
-            if self.isVisible(): self.fade_out()
+            if self.isVisible():
+                self.hide()
+                self.label.clear()
             return
 
-        self.card.lbl_text.setText(text)
-        self.card.adjustSize()
-        self.card.show()
+        self.label.setText(text)
 
-        padding_y = 12
+        # Force pixel-perfect sizing to prevent scaling blur (User Suggestion)
+        self.label.resize(self.label.sizeHint())
+        self.resize(self.label.sizeHint().width() + 2, self.label.sizeHint().height() + 2)
+
+        # Calculate Final Geometry
+        final_w = self.width()
+        final_h = self.height()
+
+        # Position slightly offset to right of caret
+        final_x = x + 8
+
+        # Simple Vertical Centering
+        if h > 0:
+            center_y = y + (h // 2)
+            final_y = center_y - (final_h // 2)
+        else:
+            final_y = y
+
+        # Extra safety for screen bounds
         screen = QApplication.primaryScreen()
         screen_geo = screen.geometry()
 
-        card_w = self.card.width()
+        if final_x + final_w > screen_geo.right():
+            pass
 
-        final_x = min(x, screen_geo.width() - card_w - 20)
-        final_y = y + padding_y
+        self.setGeometry(final_x, final_y, final_w, final_h)
+        self.label.move(0, 0) # Ensure label is at 0,0 relative to window
 
-        margin = 30
-        self.setGeometry(final_x - margin, final_y - margin, self.card.width() + 2*margin, self.card.height() + 2*margin)
-        self.card.move(margin, margin)
-
-        if not self.isVisible() or self.windowOpacity() == 0:
+        if not self.isVisible():
+            self.setWindowOpacity(1.0)
             self.show()
-            self.fade_in()
-
-    def fade_in(self):
-        self.anim_group.clear()
-
-        anim_op = QPropertyAnimation(self, b"opacity")
-        anim_op.setDuration(300)
-        anim_op.setStartValue(0.0)
-        anim_op.setEndValue(1.0)
-        anim_op.setEasingCurve(QEasingCurve.Type.OutQuad)
-
-        start_pos = self.card.pos() + QPoint(0, 15)
-        end_pos = self.card.pos()
-
-        anim_move = QPropertyAnimation(self.card, b"pos")
-        anim_move.setDuration(400)
-        anim_move.setStartValue(start_pos)
-        anim_move.setEndValue(end_pos)
-        anim_move.setEasingCurve(QEasingCurve.Type.OutCubic)
-
-        self.anim_group.addAnimation(anim_op)
-        self.anim_group.addAnimation(anim_move)
-        self.anim_group.start()
-
-    def fade_out(self):
-        self.anim_group.clear()
-
-        anim_op = QPropertyAnimation(self, b"opacity")
-        anim_op.setDuration(200)
-        anim_op.setStartValue(self.windowOpacity())
-        anim_op.setEndValue(0.0)
-        anim_op.setEasingCurve(QEasingCurve.Type.InQuad)
-
-        anim_op.finished.connect(self.hide)
-        self.anim_group.addAnimation(anim_op)
-        self.anim_group.start()
+            self.raise_() # Ensure top
