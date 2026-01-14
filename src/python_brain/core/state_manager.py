@@ -15,8 +15,14 @@ class StateManager:
             ghost_text="",
             visible=False,
             x=0,
-            y=0
+            y=0,
+            show_chat=False
         )
+
+    def trigger_chat(self):
+        """Enable the chat window trigger"""
+        with self._lock:
+            self._ui_state.show_chat = True
 
     def update_ghost_text(self, text: str, x: int, y: int, h: int):
         """Update the ghost text suggestion and position"""
@@ -37,10 +43,15 @@ class StateManager:
         """Get current UI state (called by GET /ui/state endpoint)"""
         with self._lock:
             # Return a copy to avoid race conditions
-            return UIState(
+            state = UIState(
                 ghost_text=self._ui_state.ghost_text,
                 visible=self._ui_state.visible,
                 x=self._ui_state.x,
                 y=self._ui_state.y,
-                h=self._ui_state.h
+                h=self._ui_state.h,
+                show_chat=self._ui_state.show_chat
             )
+            # Auto-reset trigger after reading
+            if self._ui_state.show_chat:
+                self._ui_state.show_chat = False
+            return state

@@ -43,6 +43,21 @@ def complete(text_context: str) -> str:
     # No suggestion
     return ""
 
+def chat_completion(query: str) -> str:
+    """
+    Generate a response to a chat query.
+    Currently mocks a response for 'Plan Mode'.
+    """
+    q_lower = query.lower()
+    if "rewrite" in q_lower:
+        return f"Here is a rewritten version of your text:\n\n'{query}'\n\n(This is a polished version aimed at better clarity and tone)."
+    elif "summarize" in q_lower:
+        return f"Summary:\n\nThe text discusses '{query[:20]}...' and highlights key points about efficiency and design."
+    elif "explain" in q_lower:
+        return f"Explanation:\n\nThe concept you asked about involves several layers of abstraction. Essentially, '{query}' refers to..."
+    else:
+        return f"I understand you want to discuss '{query}'.\n\nAs an AI, I can help you draft, edit, and refine your text. What would you like to do next?"
+
 # Future: ONNX Runtime integration
 def _load_onnx_model():
     """

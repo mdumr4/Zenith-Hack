@@ -31,3 +31,4 @@ class UIState(BaseModel):
     x: int = Field(default=0, description="Ghost text X position")
     y: int = Field(default=0, description="Ghost text Y position")
     h: int = Field(default=0, description="Cursor height")
+    show_chat: bool = Field(default=False, description="Trigger to show Chat Window")

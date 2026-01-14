@@ -1,17 +1,34 @@
 # chat_window.py
-from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
-                             QLabel, QFrame, QGraphicsDropShadowEffect, QLineEdit, QPushButton, 
+from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+                             QLabel, QFrame, QGraphicsDropShadowEffect, QLineEdit, QPushButton,
                              QStackedWidget, QScrollArea, QSizePolicy, QAbstractButton)
-from PyQt6.QtCore import Qt, QPoint, QPropertyAnimation, QEasingCurve, QRect, QTimer, pyqtSignal, QSize, QParallelAnimationGroup, QAbstractAnimation, pyqtProperty
+from PyQt6.QtCore import Qt, QPoint, QPropertyAnimation, QEasingCurve, QRect, QTimer, pyqtSignal, QSize, QParallelAnimationGroup, QAbstractAnimation, pyqtProperty, QThread
 from PyQt6.QtGui import QColor, QPainter, QPen, QBrush, QCursor, QLinearGradient, QPolygonF, QPainterPath, QAction, QKeySequence
+from ui.client import UIClient
+
+class ChatWorker(QThread):
+    """Async worker for fetching AI responses without freezing UI"""
+    finished = pyqtSignal(str)
+
+    def __init__(self, message, context=""):
+        super().__init__()
+        self.message = message
+        self.context = context
+        # Instantiate new client for this thread
+        self.client = UIClient()
+
+    def run(self):
+        # Blocking network call
+        response = self.client.send_chat_request(self.message, self.context)
+        self.finished.emit(response)
 
 # --- THEME PALETTE ---
-COLOR_ACCENT = "#FF5A1F"       
-COLOR_BG_APP = "#F7F7F8"       
-COLOR_BG_CARD = "#FFFFFF"      
+COLOR_ACCENT = "#FF5A1F"
+COLOR_BG_APP = "#F7F7F8"
+COLOR_BG_CARD = "#FFFFFF"
 COLOR_BORDER_CARD = "#E4E4E7"  # Slightly darker for crispness
-COLOR_BG_HOVER = "#F2F3F6"     
-COLOR_BORDER_HOVER = "#D4D4D8" 
+COLOR_BG_HOVER = "#F2F3F6"
+COLOR_BORDER_HOVER = "#D4D4D8"
 COLOR_TEXT_MAIN = "#09090B"    # Almost black (Zinc-950) for primary text
 COLOR_TEXT_SUB = "#52525B"     # Darker grey (Zinc-600) for readable secondary text
 
@@ -33,7 +50,7 @@ class AnimButton(QAbstractButton):
     def hoverProgress(self): return self._hover_progress
     @hoverProgress.setter
     def hoverProgress(self, value): self._hover_progress = value; self.update()
-    
+
     @pyqtProperty(float)
     def pressProgress(self): return self._press_progress
     @pressProgress.setter
@@ -64,20 +81,20 @@ class CloseBtn(AnimButton):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setFixedSize(32, 32)
-        
+
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         bg_alpha = int(0 + (self._hover_progress * 20) + (self._press_progress * 30))
         painter.setBrush(QBrush(QColor(0, 0, 0, bg_alpha)))
         painter.setPen(Qt.PenStyle.NoPen)
-        painter.drawRoundedRect(self.rect(), 10, 10) 
-        
-        c1 = QColor(COLOR_TEXT_SUB); c2 = QColor(COLOR_TEXT_MAIN); c3 = QColor(COLOR_ACCENT) 
+        painter.drawRoundedRect(self.rect(), 10, 10)
+
+        c1 = QColor(COLOR_TEXT_SUB); c2 = QColor(COLOR_TEXT_MAIN); c3 = QColor(COLOR_ACCENT)
         r = c1.red() + (c2.red() - c1.red()) * self._hover_progress
         g = c1.green() + (c2.green() - c1.green()) * self._hover_progress
         b = c1.blue() + (c2.blue() - c1.blue()) * self._hover_progress
-        
+
         if self._press_progress > 0:
              r = r + (c3.red() - r) * self._press_progress
              g = g + (c3.green() - g) * self._press_progress
@@ -91,15 +108,15 @@ class ArrowBtn(AnimButton):
     def __init__(self, direction="right", parent=None):
         super().__init__(parent)
         self.direction = direction
-        self.setFixedSize(36, 36) 
+        self.setFixedSize(36, 36)
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         bg_alpha = int(0 + (self._hover_progress * 20) + (self._press_progress * 30))
         painter.setBrush(QBrush(QColor(0, 0, 0, bg_alpha)))
         painter.setPen(Qt.PenStyle.NoPen)
-        painter.drawRoundedRect(self.rect(), 18, 18) 
-        c1 = QColor(COLOR_TEXT_SUB); c2 = QColor(COLOR_TEXT_MAIN); c3 = QColor(COLOR_ACCENT) 
+        painter.drawRoundedRect(self.rect(), 18, 18)
+        c1 = QColor(COLOR_TEXT_SUB); c2 = QColor(COLOR_TEXT_MAIN); c3 = QColor(COLOR_ACCENT)
         r = c1.red() + (c2.red() - c1.red()) * self._hover_progress
         g = c1.green() + (c2.green() - c1.green()) * self._hover_progress
         b = c1.blue() + (c2.blue() - c1.blue()) * self._hover_progress
@@ -110,9 +127,9 @@ class ArrowBtn(AnimButton):
         pen = QPen(QColor(int(r), int(g), int(b))); pen.setWidthF(2.0); pen.setCapStyle(Qt.PenCapStyle.RoundCap); pen.setJoinStyle(Qt.PenJoinStyle.RoundJoin)
         painter.setPen(pen)
         mid_y = 18; path = QPainterPath()
-        if self.direction == "right": 
+        if self.direction == "right":
             path.moveTo(11, mid_y); path.lineTo(25, mid_y); path.moveTo(25 - 5, mid_y - 5); path.lineTo(25, mid_y); path.lineTo(25 - 5, mid_y + 5)
-        else: 
+        else:
             path.moveTo(25, mid_y); path.lineTo(11, mid_y); path.moveTo(11 + 5, mid_y - 5); path.lineTo(11, mid_y); path.lineTo(11 + 5, mid_y + 5)
         painter.drawPath(path)
 
@@ -122,12 +139,12 @@ class MicBtn(AnimButton):
         self.setFixedSize(36, 36)
         self._listening = False
         self._pulse_progress = 0.0
-        
+
         self.anim_pulse = QPropertyAnimation(self, b"pulseProgress")
         self.anim_pulse.setDuration(2000)
         self.anim_pulse.setStartValue(0.0)
         self.anim_pulse.setEndValue(1.0)
-        self.anim_pulse.setLoopCount(-1) 
+        self.anim_pulse.setLoopCount(-1)
         self.anim_pulse.setEasingCurve(QEasingCurve.Type.Linear)
 
     @pyqtProperty(float)
@@ -161,14 +178,14 @@ class MicBtn(AnimButton):
 
             painter.setBrush(QBrush(bg_color)); painter.setPen(Qt.PenStyle.NoPen)
             painter.drawRoundedRect(self.rect(), 18, 18)
-            
+
             c_icon = QColor(COLOR_TEXT_SUB)
             if self._hover_progress > 0.1: c_icon = QColor(COLOR_TEXT_MAIN)
             if self._listening: c_icon = QColor(COLOR_ACCENT)
 
             pen = QPen(c_icon); pen.setWidthF(2.0); pen.setCapStyle(Qt.PenCapStyle.RoundCap)
             painter.setPen(pen); painter.setBrush(Qt.BrushStyle.NoBrush)
-            painter.drawRoundedRect(15, 11, 6, 11, 3, 3) 
+            painter.drawRoundedRect(15, 11, 6, 11, 3, 3)
             path = QPainterPath(); path.moveTo(12, 18); path.arcTo(12, 16, 12, 10, 180, 180)
             painter.drawLine(18, 26, 18, 29); painter.drawLine(15, 29, 21, 29); painter.drawPath(path)
         except Exception as e:
@@ -182,14 +199,14 @@ class RoundedPillBtn(QFrame):
         self.setFixedHeight(68)
         self.setObjectName("PillBtn")
         self.is_hovered = False
-        
+
         layout = QHBoxLayout(self)
         layout.setContentsMargins(24, 0, 24, 0); layout.setSpacing(16)
-        
-        self.icon_lbl = QLabel(icon_char) 
+
+        self.icon_lbl = QLabel(icon_char)
         self.icon_lbl.setStyleSheet(f"border: none; background: transparent; font-size: 22px; font-weight: 500; color: {COLOR_TEXT_SUB};")
         layout.addWidget(self.icon_lbl)
-        
+
         text_layout = QVBoxLayout(); text_layout.setSpacing(4); text_layout.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         self.t_lbl = QLabel(text)
         self.t_lbl.setStyleSheet(f"border: none; background: transparent; font-family: 'Segoe UI'; font-size: 16px; font-weight: 700; color: {COLOR_TEXT_MAIN}; letter-spacing: -0.2px;")
@@ -219,37 +236,37 @@ class CommandInput(QFrame):
     submitted = pyqtSignal(str)
     def __init__(self):
         super().__init__()
-        self.setFixedHeight(60) 
+        self.setFixedHeight(60)
         self.setObjectName("CommandInput")
         self.is_focused = False
-        
+
         self.sim_timer = QTimer()
         self.sim_timer.timeout.connect(self.stream_char)
         self.target_text = "I want to organize a team meeting for next Friday at 2 PM."
         self.char_idx = 0
-        
+
         layout = QHBoxLayout(self)
         layout.setContentsMargins(20, 4, 12, 4); layout.setSpacing(8)
-        
+
         # Stack text input and listening label
         self.stack_inp = QStackedWidget()
         self.stack_inp.setStyleSheet("background: transparent;")
-        
+
         self.input_field = QLineEdit()
         self.input_field.setPlaceholderText("Tell the AI what you want...")
         self.input_field.setStyleSheet(f"border: none; selection-background-color: {COLOR_ACCENT}; selection-color: white; background: transparent; font-family: 'Segoe UI'; font-size: 16px; font-weight: 500; color: {COLOR_TEXT_MAIN};")
         self.input_field.focusInEvent = self.on_focus_in
         self.input_field.focusOutEvent = self.on_focus_out
         self.input_field.returnPressed.connect(self.handle_submit)
-        
+
         self.lbl_listening = QLabel("Listening...")
         self.lbl_listening.setStyleSheet(f"color: {COLOR_ACCENT}; font-size: 16px; font-weight: 700; font-family: 'Segoe UI'; letter-spacing: 0.5px;")
-        
+
         self.stack_inp.addWidget(self.input_field)
         self.stack_inp.addWidget(self.lbl_listening)
-        
+
         layout.addWidget(self.stack_inp)
-        
+
         self.btn_mic = MicBtn()
         self.btn_mic.clicked.connect(self.toggle_listening)
         layout.addWidget(self.btn_mic)
@@ -257,7 +274,7 @@ class CommandInput(QFrame):
         self.btn_arrow = ArrowBtn(direction="right")
         self.btn_arrow.clicked.connect(self.handle_submit)
         layout.addWidget(self.btn_arrow)
-        
+
         self.update_style()
 
     def update_style(self):
@@ -269,7 +286,7 @@ class CommandInput(QFrame):
         active = not self.btn_mic._listening
         self.btn_mic.setListening(active)
         self.update_style()
-        
+
         if active:
             self.input_field.clear()
             self.stack_inp.setCurrentWidget(self.lbl_listening) # Show "Listening..." label
@@ -282,10 +299,10 @@ class CommandInput(QFrame):
             if not self.input_field.text(): self.input_field.setPlaceholderText("Tell the AI what you want...")
 
     def start_streaming(self):
-        if self.btn_mic._listening: 
+        if self.btn_mic._listening:
             self.stack_inp.setCurrentWidget(self.input_field) # Switch back to input for text stream
             self.input_field.setFocus()
-            self.sim_timer.start(50) 
+            self.sim_timer.start(50)
 
     def stream_char(self):
         if not self.btn_mic._listening: return
@@ -300,7 +317,7 @@ class CommandInput(QFrame):
         self.btn_mic.setListening(False)
         self.stack_inp.setCurrentWidget(self.input_field)
         self.update_style()
-        if not self.input_field.text(): self.input_field.setPlaceholderText("Tell the AI what you want...") 
+        if not self.input_field.text(): self.input_field.setPlaceholderText("Tell the AI what you want...")
 
     def on_focus_in(self, event): self.is_focused = True; self.update_style(); QLineEdit.focusInEvent(self.input_field, event)
     def on_focus_out(self, event): self.is_focused = False; self.update_style(); QLineEdit.focusOutEvent(self.input_field, event)
@@ -321,7 +338,7 @@ class TypewriterLabel(QLabel):
         self.full_text = text
         self.current_idx = 0
         self.setText("")
-        self.timer.start(15) 
+        self.timer.start(15)
 
     def add_char(self):
         if self.current_idx < len(self.full_text):
@@ -342,7 +359,7 @@ class ProStackedWidget(QStackedWidget):
         current_widget = self.widget(current_idx)
         next_widget = self.widget(next_idx)
         width = self.width()
-        next_widget.setGeometry(QRect(width, 0, width, self.height())); next_widget.show(); next_widget.raise_() 
+        next_widget.setGeometry(QRect(width, 0, width, self.height())); next_widget.show(); next_widget.raise_()
         self.animation_group = QParallelAnimationGroup()
         anim_curr = QPropertyAnimation(current_widget, b"pos"); anim_curr.setDuration(500); anim_curr.setStartValue(QPoint(0, 0)); anim_curr.setEndValue(QPoint(-width, 0)); anim_curr.setEasingCurve(QEasingCurve.Type.OutCubic)
         anim_next = QPropertyAnimation(next_widget, b"pos"); anim_next.setDuration(500); anim_next.setStartValue(QPoint(width, 0)); anim_next.setEndValue(QPoint(0, 0)); anim_next.setEasingCurve(QEasingCurve.Type.OutCubic)
@@ -370,80 +387,80 @@ class ChatWindow(QMainWindow):
         super().__init__()
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.Tool)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.resize(380, 560) 
+        self.resize(380, 560)
         self.dragging = False
         self.offset = QPoint()
-        
+
         self.central_frame = QFrame()
         self.central_frame.setStyleSheet(f"QFrame {{ background-color: {COLOR_BG_APP}; border-radius: 20px; border: 1px solid {COLOR_BORDER_CARD}; }}")
         self.setCentralWidget(self.central_frame)
         self.central_frame.setGraphicsEffect(PremiumShadow(blur=40, offset=12, opacity=0.08))
-        
+
         self.main_layout = QVBoxLayout(self.central_frame)
-        self.main_layout.setContentsMargins(28, 28, 28, 28); self.main_layout.setSpacing(24) 
-        
+        self.main_layout.setContentsMargins(28, 28, 28, 28); self.main_layout.setSpacing(24)
+
         # --- Header ---
         header = QWidget(); header.setStyleSheet("background: transparent; border: none;")
         header_layout = QHBoxLayout(header); header_layout.setContentsMargins(0, 0, 0, 0)
-        
+
         brand_box = QVBoxLayout(); brand_box.setSpacing(0)
         title = QLabel("AI Keyboard"); title.setStyleSheet(f"color: {COLOR_ACCENT}; font-weight: 800; font-size: 20px; font-family: 'Segoe UI'; letter-spacing: -0.5px;")
         sub = QLabel("Plan mode"); sub.setStyleSheet(f"color: {COLOR_TEXT_SUB}; font-weight: 500; font-size: 14px; font-family: 'Segoe UI';")
         brand_box.addWidget(title); brand_box.addWidget(sub)
         header_layout.addLayout(brand_box)
         header_layout.addStretch()
-        
+
         self.btn_back = ArrowBtn(direction="left"); self.btn_back.clicked.connect(self.go_back); self.btn_back.hide()
         header_layout.addWidget(self.btn_back)
         self.btn_close = CloseBtn(); self.btn_close.clicked.connect(self.hide_chat)
         header_layout.addWidget(self.btn_close)
         self.main_layout.addWidget(header)
-        
+
         # --- Stack ---
         self.stack = ProStackedWidget(); self.stack.setStyleSheet("background: transparent; border: none;")
-        
+
         # PAGE 1: Options
         self.page_options = QWidget()
         opt_layout = QVBoxLayout(self.page_options); opt_layout.setContentsMargins(0, 8, 0, 8); opt_layout.setSpacing(16)
-        
+
         btn_1 = RoundedPillBtn("✎", "Rewrite", "Improve grammar and tone")
         btn_2 = RoundedPillBtn("📝", "Summarize", "Get the key points")
         btn_3 = RoundedPillBtn("💡", "Explain", "Make this easier to understand")
-        
+
         btn_1.clicked.connect(lambda: self.go_chat("Rewrite"))
         btn_2.clicked.connect(lambda: self.go_chat("Summarize"))
         btn_3.clicked.connect(lambda: self.go_chat("Explain"))
-        
+
         opt_layout.addWidget(btn_1); opt_layout.addWidget(btn_2); opt_layout.addWidget(btn_3); opt_layout.addStretch()
-        
+
         self.smart_input = CommandInput()
-        self.smart_input.submitted.connect(self.go_chat) 
+        self.smart_input.submitted.connect(self.go_chat)
         opt_layout.addWidget(self.smart_input)
-        
+
         self.stack.addWidget(self.page_options)
-        
+
         # PAGE 2: Chat Layout
         self.page_chat = QWidget()
         chat_layout = QVBoxLayout(self.page_chat)
         chat_layout.setContentsMargins(12, 10, 12, 24) # Adjusted margins
         chat_layout.setSpacing(16)
         chat_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        
+
         # 1. Context Header (The User's Request)
         self.req_container = QHBoxLayout()
         self.req_container.setSpacing(8)
-        
-        icon_req = QLabel("✨") 
+
+        icon_req = QLabel("✨")
         icon_req.setStyleSheet("font-size: 16px; background: transparent;")
-        
+
         self.user_bubble = QLabel("") # Will hold "Rewrite..."
         self.user_bubble.setStyleSheet(f"color: {COLOR_TEXT_SUB}; background: transparent; font-family: 'Segoe UI'; font-size: 14px; font-weight: 500;")
-        
+
         self.req_container.addWidget(icon_req)
         self.req_container.addWidget(self.user_bubble)
         self.req_container.addStretch()
         chat_layout.addLayout(self.req_container)
-        
+
         # 2. AI Result Card
         self.ai_surface = QFrame()
         self.ai_surface.setObjectName("AiCard")
@@ -454,31 +471,31 @@ class ChatWindow(QMainWindow):
                 border-radius: 16px;
             }}
         """)
-        
+
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(20); shadow.setOffset(0, 8); shadow.setColor(QColor(0,0,0, 15))
         self.ai_surface.setGraphicsEffect(shadow)
-        
+
         card_layout = QVBoxLayout(self.ai_surface)
         card_layout.setContentsMargins(20, 20, 20, 20)
         card_layout.setSpacing(16)
-        
+
         self.ai_text = TypewriterLabel("Typing...")
         self.ai_text.setWordWrap(True)
         self.ai_text.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         self.ai_text.setStyleSheet(f"border: none; font-size: 15px; font-weight: 400; line-height: 1.6; color: {COLOR_TEXT_MAIN}; font-family: 'Segoe UI'; background: transparent;")
-        
+
         card_layout.addWidget(self.ai_text)
-        
+
         div = QFrame()
         div.setFixedHeight(1)
-        div.setStyleSheet(f"background-color: {COLOR_BG_APP}; border: none;") 
+        div.setStyleSheet(f"background-color: {COLOR_BG_APP}; border: none;")
         card_layout.addWidget(div)
-        
+
         # Actions Footer
         footer = QHBoxLayout()
         footer.setSpacing(12)
-        
+
         self.btn_copy = QPushButton("Copy")
         self.btn_copy.setCursor(Qt.CursorShape.PointingHandCursor)
         self.btn_copy.setStyleSheet(f"QPushButton {{ background-color: transparent; color: {COLOR_TEXT_SUB}; border: none; font-size: 13px; font-weight: 600; text-align: left; }} QPushButton:hover {{ color: {COLOR_TEXT_MAIN}; }}")
@@ -487,34 +504,34 @@ class ChatWindow(QMainWindow):
         self.btn_regen = QPushButton("Regenerate")
         self.btn_regen.setCursor(Qt.CursorShape.PointingHandCursor)
         self.btn_regen.setStyleSheet(f"QPushButton {{ background-color: transparent; color: {COLOR_TEXT_SUB}; border: none; font-size: 13px; font-weight: 600; }} QPushButton:hover {{ color: {COLOR_TEXT_MAIN}; }}")
-        self.btn_regen.clicked.connect(lambda: self.ai_text.start_typing(self.ai_text.full_text)) 
+        self.btn_regen.clicked.connect(lambda: self.ai_text.start_typing(self.ai_text.full_text))
 
         self.btn_insert = QPushButton("Insert")
         self.btn_insert.setCursor(Qt.CursorShape.PointingHandCursor)
         self.btn_insert.setStyleSheet(f"QPushButton {{ background-color: {COLOR_ACCENT}; color: white; border: none; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 600; }} QPushButton:hover {{ background-color: #E04815; }}")
-        self.btn_insert.clicked.connect(self.handle_insert) 
- 
+        self.btn_insert.clicked.connect(self.handle_insert)
+
         footer.addWidget(self.btn_copy)
         footer.addWidget(self.btn_regen)
         footer.addStretch()
         footer.addWidget(self.btn_insert)
-         
+
         card_layout.addLayout(footer)
-         
+
         chat_layout.addWidget(self.ai_surface)
         chat_layout.addStretch()
         self.stack.addWidget(self.page_chat)
-         
+
         self.main_layout.addWidget(self.stack)
-         
+
         self.toggle_action = QAction("Toggle Plan Mode", self)
         self.toggle_action.setShortcut(QKeySequence("Ctrl+K"))
         self.toggle_action.triggered.connect(self.toggle_visibility)
         self.addAction(self.toggle_action)
- 
+
         self.center_on_screen()
         self.hide() # Start hidden
- 
+
     def copy_to_clipboard(self):
         try:
             cb = QApplication.clipboard()
@@ -524,18 +541,18 @@ class ChatWindow(QMainWindow):
                 QTimer.singleShot(2000, lambda: self.btn_copy.setText("Copy"))
         except Exception as e:
             print(f"Clipboard Error: {e}")
- 
+
     def handle_insert(self):
         self.btn_insert.setText("Inserted!")
         self.btn_insert.setStyleSheet(f"QPushButton {{ background-color: #10B981; color: white; border: none; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 600; }}") # Green success
         QTimer.singleShot(1000, self.finish_insert)
- 
+
     def finish_insert(self):
         print(f"INSERTING: {self.ai_text.full_text}")
         # self.hide_chat()  <-- User requested NOT to close
         # Reset button style for next time
         QTimer.singleShot(500, lambda: self.reset_insert_btn())
- 
+
     def reset_insert_btn(self):
         self.btn_insert.setText("Insert")
         self.btn_insert.setStyleSheet(f"QPushButton {{ background-color: {COLOR_ACCENT}; color: white; border: none; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 600; }} QPushButton:hover {{ background-color: #E04815; }}")
@@ -545,15 +562,22 @@ class ChatWindow(QMainWindow):
         if "Rewrite" in action: displayText = "Rewrite this content."
         elif "Summarize" in action: displayText = "Summarize this."
         elif "Explain" in action: displayText = "Explain this."
-        
+
         self.user_bubble.setText(displayText)
         self.ai_text.setText("Thinking...")
-        self.stack.push_next() 
+        self.stack.push_next()
         self.btn_back.show()
-        QTimer.singleShot(600, lambda: self.ai_text.start_typing("This is a placeholder for the actual AI response from the backend. The UI is now fully polished."))
+
+        # Start Async Worker
+        self.worker = ChatWorker(action)
+        self.worker.finished.connect(self.on_chat_response)
+        self.worker.start()
+
+    def on_chat_response(self, response):
+        self.ai_text.start_typing(response)
 
     def go_back(self):
-        self.stack.push_prev() 
+        self.stack.push_prev()
         self.btn_back.hide()
         self.smart_input.input_field.setFocus()
 
@@ -562,22 +586,22 @@ class ChatWindow(QMainWindow):
         x = (screen.width() - self.width()) // 2
         y = (screen.height() - self.height()) // 2
         self.move(x, y)
-        
+
     def animate_entry(self):
         self.setWindowOpacity(0)
         self.anim_opacity = QPropertyAnimation(self, b"windowOpacity"); self.anim_opacity.setDuration(450); self.anim_opacity.setStartValue(0); self.anim_opacity.setEndValue(1); self.anim_opacity.setEasingCurve(QEasingCurve.Type.OutQuart)
-        
+
         current_geo = self.geometry()
         start_rect = QRect(current_geo.x(), current_geo.y() + 40, current_geo.width(), current_geo.height())
         self.anim_geo = QPropertyAnimation(self, b"geometry"); self.anim_geo.setDuration(500); self.anim_geo.setStartValue(start_rect); self.anim_geo.setEndValue(current_geo); self.anim_geo.setEasingCurve(QEasingCurve.Type.OutQuart)
-        
+
         self.anim_opacity.start(); self.anim_geo.start()
 
     def hide_chat(self): self.hide()
     def show_chat(self): self.show(); self.animate_entry(); self.activateWindow(); self.smart_input.input_field.setFocus()
     def toggle_visibility(self): self.hide_chat() if self.isVisible() else self.show_chat()
-    def mousePressEvent(self, e): 
-        if e.button() == Qt.MouseButton.LeftButton: 
+    def mousePressEvent(self, e):
+        if e.button() == Qt.MouseButton.LeftButton:
            if e.position().y() < 120: self.dragging = True; self.offset = e.globalPosition().toPoint() - self.frameGeometry().topLeft()
     def mouseMoveEvent(self, e):
         if self.dragging: self.move(e.globalPosition().toPoint() - self.offset)

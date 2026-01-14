@@ -96,8 +96,13 @@ void FraiTextService::_UninitKeyEventSink() {
 }
 
 STDMETHODIMP FraiTextService::OnTestKeyDown(ITfContext *pic, WPARAM wParam, LPARAM lParam, BOOL *pfEaten) {
-    // We strictly "peek" here.
-    // If we want to swallow a key (like Voice Mode Trigger), we set *pfEaten = TRUE.
+    // Check for Ctrl+Space (Global Hotkey)
+    // Using Ctrl+Space instead of Alt+Space (which is reserved for System Menu)
+    if (wParam == VK_SPACE && (GetKeyState(VK_CONTROL) & 0x8000)) {
+        *pfEaten = TRUE;
+        return S_OK;
+    }
+
     *pfEaten = FALSE;
     return S_OK;
 }
@@ -135,6 +140,15 @@ CaretPosition _GetCaretPosition(ITfContext *pic, TfClientId tid) {
 STDMETHODIMP FraiTextService::OnKeyDown(ITfContext *pic, WPARAM wParam, LPARAM lParam, BOOL *pfEaten) {
     // DEBUG LOGGING
     WriteLog("FraiIME::OnKeyDown: %llu\n", wParam);
+
+    // Global Hotkey: Ctrl + Space -> Trigger Chat Plan Mode
+    // 999 is our magic keycode for "Show Chat"
+    if (wParam == VK_SPACE && (GetKeyState(VK_CONTROL) & 0x8000)) {
+        WriteLog("Hotkey: Ctrl+Space Detected. Sending Magic Key 999.\n");
+        BridgeClient::SendAsync(999, L"", 0, 0, 0);
+        *pfEaten = TRUE;
+        return S_OK;
+    }
 
     // Logic: If Backspace, check Undo Stack
     if (wParam == VK_BACK) {

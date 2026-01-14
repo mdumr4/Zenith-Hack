@@ -53,6 +53,11 @@ async def handle_input(event: InputEvent):
     - Returns action directives for IME
     """
     try:
+        # Check for Magic Chat Trigger (999)
+        if event.trigger_key == 999:
+            state.trigger_chat()
+            return {"action": "none"} # Consume key
+
         # Route to appropriate handler based on trigger key
         result = route_input(event)
 

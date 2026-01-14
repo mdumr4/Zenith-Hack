@@ -22,7 +22,7 @@ class UIClient:
             conn = self._get_connection()
             conn.request("GET", "/ui/state")
             response = conn.getresponse()
-            
+
             if response.status == 200:
                 data = response.read().decode("utf-8")
                 # Strict Schema Validation could go here, but for now we trust JSON parsing
@@ -37,4 +37,34 @@ class UIClient:
             if self.connection:
                 self.connection.close()
             self.connection = None
-            return None
+    def send_chat_request(self, message: str, context: str = ""):
+        """
+        Sends a POST /chat request to the backend.
+        Returns the response string.
+        """
+        try:
+            # We create a FRESH connection for chat to avoid conflicting with the polling loop
+            # Or we can reuse if thread-safe? http.client is NOT thread safe if shared.
+            # Client.py is used by main thread (poll) and worker thread (chat).
+            # We should probably instantiate a new client or new connection for chat.
+
+            # Simple approach: Create a new short-lived connection for this request
+            conn = http.client.HTTPConnection(self.host, self.port, timeout=5.0) # Longer timeout for LLM
+            headers = {"Content-type": "application/json"}
+            payload = json.dumps({"message": message, "context": context})
+
+            conn.request("POST", "/chat", payload, headers)
+            response = conn.getresponse()
+
+            if response.status == 200:
+                data = response.read().decode("utf-8")
+                result = json.loads(data)
+                conn.close()
+                return result.get("response", "")
+            else:
+                response.read()
+                conn.close()
+                return f"Error: Server returned {response.status}"
+
+        except Exception as e:
+            return f"Error: Could not connect to backend ({e})"
