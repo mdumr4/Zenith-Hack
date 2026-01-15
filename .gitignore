@@ -1,0 +1,49 @@
+# Build Artifacts
+build/
+*.obj
+*.iobj
+*.ipdb
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.exe
+*.dll
+!src/third_party/**/*.dll # Exception if we had third party DLLs, but we don't.
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+.venv
+env/
+
+# Logs
+*.log
+*.txt
+!requirements.txt
+!CMakeLists.txt
+!Instruction.md
+!*.md
+
+# IDE
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.filters
+
+# Temp / Backup
+*.tmp
+*.bak
+*.swp
+*~
+
+# Project Specific
+frai_debug.txt
+rebuild_and_update.bat # This is a dev utility, but maybe useful to keep? I'll keep it but typically dev scripts might be ignored. I'll Keep it.
+# Actually I will NOT ignore matches to force them to be tracked if they are already tracked. But new ones will be ignored.
