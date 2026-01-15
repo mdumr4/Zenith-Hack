@@ -35,7 +35,7 @@ class GhostTextLabel(QLabel):
         # Fixed stylesheet with Windows font fixes
         self.setStyleSheet("""
             QLabel#GhostTextLabel {
-                color: rgba(128, 128, 128, 0.7);
+                color: #000000;  /* Pure Black */
                 background-color: transparent;
                 padding: 0px;
                 margin: 0px;
@@ -68,6 +68,7 @@ class OverlayWindow(QMainWindow):
         self.setAttribute(Qt.WidgetAttribute.WA_ShowWithoutActivating)
 
         self.container = QWidget(self)
+        self.container.setStyleSheet("background: transparent;")
         self.setCentralWidget(self.container)
 
         self.label = GhostTextLabel(self.container)
@@ -98,6 +99,7 @@ class OverlayWindow(QMainWindow):
             return
 
         self.label.setText(text)
+        self.label.show()
 
         # Force pixel-perfect sizing to prevent scaling blur (User Suggestion)
         self.label.resize(self.label.sizeHint())
@@ -107,15 +109,22 @@ class OverlayWindow(QMainWindow):
         final_w = self.width()
         final_h = self.height()
 
+        # DPI CORRECTION: C++ sends Physical Pixels, Qt uses Logical Pixels
+        dpr = self.devicePixelRatio()
+
         # Position slightly offset to right of caret
-        final_x = x + 8
+        final_x = int(x / dpr) + 8
 
         # Simple Vertical Centering
         if h > 0:
-            center_y = y + (h // 2)
+            # Scale height too
+            scaled_h = int(h / dpr)
+            scaled_y = int(y / dpr)
+
+            center_y = scaled_y + (scaled_h // 2)
             final_y = center_y - (final_h // 2)
         else:
-            final_y = y
+            final_y = int(y / dpr)
 
         # Extra safety for screen bounds
         screen = QApplication.primaryScreen()

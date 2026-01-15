@@ -1,9 +1,9 @@
-// BridgeClient.cpp
 #include "BridgeClient.h"
 #include <winhttp.h>
 #include <thread>
 #include <sstream>
 #include <iostream>
+#include "Logger.h"
 
 #pragma comment(lib, "winhttp.lib")
 
@@ -72,6 +72,10 @@ std::string DoSendSync(int keyCode, std::wstring context, int x, int y, int h) {
     for (char c : utf8Context) {
         if (c == '"') escapedText += "\\\"";
         else if (c == '\\') escapedText += "\\\\";
+        else if (c == '\n') escapedText += "\\n";
+        else if (c == '\r') escapedText += "\\r";
+        else if (c == '\t') escapedText += "\\t";
+        else if ((unsigned char)c < 0x20) { /* Ignore other control chars */ }
         else escapedText += c;
     }
 
@@ -84,6 +88,9 @@ std::string DoSendSync(int keyCode, std::wstring context, int x, int y, int h) {
         ", \"h\":" + std::to_string(h) + " } }";
 
     // 5. Send
+    WriteLog("[Bridge] Sending Payload Length: %d\n", jsonBody.length());
+    // WriteLog("[Bridge] Payload: %s\n", jsonBody.c_str()); # Too verbose
+
     if (WinHttpSendRequest(hRequest, headers.c_str(), (DWORD)headers.length(), (LPVOID)jsonBody.c_str(), (DWORD)jsonBody.length(), (DWORD)jsonBody.length(), 0) &&
         WinHttpReceiveResponse(hRequest, NULL)) {
 

@@ -1,5 +1,6 @@
 #include "EditSession.h"
 #include "AutoCorrect.h"
+#include <iostream>
 #include "Logger.h"
 
 EditSession::EditSession(ITfContext* context, const std::wstring& text, int deleteBackCount, AutoCorrectStack* pUndoStack)
@@ -140,6 +141,11 @@ STDMETHODIMP ReadSession::DoEditSession(TfEditCookie ec) {
         if (SUCCEEDED(pRangeContext->GetText(ec, TF_TF_MOVESTART, buf, 50, &cchCopied))) {
              buf[cchCopied] = '\0';
              *_outText = buf;
+
+             // Convert to UTF-8 for logging
+             char logBuf[256];
+             WideCharToMultiByte(CP_UTF8, 0, buf, -1, logBuf, 256, NULL, NULL);
+             WriteLog("[ReadSession] Retrieved %d chars: '%s'\n", cchCopied, logBuf);
         }
         pRangeContext->Release();
     }

@@ -51,6 +51,10 @@ async def root():
 
 @app.post("/input")
 async def handle_input(event: InputEvent):
+    # DEBUG: Log input for Tab debugging
+    if event.trigger_key == 9: # Tab
+        print(f"[SERVER] Input: Key={event.trigger_key}, Context='{event.text[-10:] if event.text else ''}'")
+
     """
     PRIMARY ENDPOINT: Receives keystroke events from C++ IME.
     Schema: Instruction.md Section 6B
@@ -65,6 +69,9 @@ async def handle_input(event: InputEvent):
             state.trigger_chat()
             return {"action": "none"} # Consume key
 
+        # DEBUG: Log RAW Context to see newlines
+        # print(f"[SERVER] Input Trigger={event.trigger_key}, RawText={repr(event.text)}")
+
         # Route to appropriate handler based on trigger key
         result = route_input(event)
 
@@ -75,6 +82,9 @@ async def handle_input(event: InputEvent):
             # INTERCEPT ACCEPT: If action is "accept", we must provide the text to insert
             if result.get("action") == "accept":
                 current_ghost = state.get_ui_state().ghost_text
+                # DEBUG: Log State during Accept
+                # print(f"[SERVER] ACCEPT LOGIC: Key=9, CurrentStateGhost='{current_ghost}'")
+
                 if current_ghost:
                     result["text"] = current_ghost
                     # We treat it as an insertion (replace range [0, 0])
@@ -83,10 +93,13 @@ async def handle_input(event: InputEvent):
                     state.clear_ghost_text()
                 else:
                     # Nothing to accept? Then probably do nothing or pass through tab
+                    # print(f"[SERVER] ACCEPT FAIL: No ghost text in state.")
                     result["action"] = "none"
 
             suggestion = result.get("suggestion")
             if suggestion:
+                # DEBUG: Log Suggestion
+                # print(f"[SERVER] SUGGESTION: '{suggestion}' for Trigger={event.trigger_key}")
                 state.update_ghost_text(
                     text=suggestion,
                     x=event.caret.x,
