@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtCore import QTimer, Qt
-# from ui.overlay import OverlayWindow # DISABLED
+from ui.overlay import OverlayWindow
 from ui.chat_window import ChatWindow
 from ui.client import UIClient
 
@@ -16,10 +16,11 @@ from ui.client import UIClient
 
 def start_ui():
     # 1. Windows DPI Awareness (Per-Monitor DPI)
-    try:
-        ctypes.windll.shcore.SetProcessDpiAwareness(1)
-    except Exception:
-        pass
+    # 1. Windows DPI Awareness (Per-Monitor DPI)
+    # try:
+    #     ctypes.windll.shcore.SetProcessDpiAwareness(1)
+    # except Exception:
+    #     pass
 
     # 2. Qt High DPI Attributes BEFORE App Creation
     if hasattr(Qt.ApplicationAttribute, "AA_EnableHighDpiScaling"):
@@ -30,7 +31,7 @@ def start_ui():
     app = QApplication(sys.argv)
 
     # Initialize Components
-    # overlay = OverlayWindow() # DISABLED PER USER REQUEST
+    overlay = OverlayWindow()
     chat_window = ChatWindow()
     client = UIClient()
 
@@ -43,9 +44,15 @@ def start_ui():
             # TEAM C CONTRACT: Poll /ui/state
             state = client.poll_state()
             if state:
-                # Update Overlay - DISABLED
-                # if "ghost_text" in state:
-                #     overlay.update_state(...)
+                # Update Overlay
+                if "ghost_text" in state:
+                    overlay.update_state(
+                        x=state.get("x", 0),
+                        y=state.get("y", 0),
+                        h=state.get("h", 0),
+                        text=state.get("ghost_text", ""),
+                        visible=state.get("visible", False)
+                    )
 
                 # Check for Chat Window trigger (Future)
                 if state.get("show_chat", False):

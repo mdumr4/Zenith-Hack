@@ -16,7 +16,9 @@ from bridge.ipc import InputEvent, UIState
 from core.router import route_input, route_chat
 from core.state_manager import StateManager
 
-app = FastAPI(title="Frai AI Backend", version="1.0")
+from contextlib import asynccontextmanager
+
+# ... imports ...
 
 # Global state manager
 state = StateManager()
@@ -32,10 +34,15 @@ def _handle_asyncio_exception(loop, context):
     # Delegate to default handler for other exceptions
     loop.default_exception_handler(context)
 
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup Logic
     loop = asyncio.get_running_loop()
     loop.set_exception_handler(_handle_asyncio_exception)
+    yield
+    # Shutdown Logic (Clean up if needed)
+
+app = FastAPI(title="Frai AI Backend", version="1.0", lifespan=lifespan)
 
 @app.get("/")
 async def root():
