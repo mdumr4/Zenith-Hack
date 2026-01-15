@@ -1,7 +1,7 @@
 # chat_window.py
 from PyQt6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QLabel, QFrame, QGraphicsDropShadowEffect, QLineEdit, QPushButton,
-                             QStackedWidget, QScrollArea, QSizePolicy, QAbstractButton)
+                             QStackedWidget, QScrollArea, QSizePolicy, QAbstractButton, QApplication)
 from PyQt6.QtCore import Qt, QPoint, QPropertyAnimation, QEasingCurve, QRect, QTimer, pyqtSignal, QSize, QParallelAnimationGroup, QAbstractAnimation, pyqtProperty, QThread
 from PyQt6.QtGui import QColor, QPainter, QPen, QBrush, QCursor, QLinearGradient, QPolygonF, QPainterPath, QAction, QKeySequence
 from ui.client import UIClient

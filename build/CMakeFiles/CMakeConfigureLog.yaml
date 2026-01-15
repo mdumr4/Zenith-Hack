@@ -1049,6 +1049,19 @@ events:
       Detecting CXX compiler /showIncludes prefix:
         main.c
         Note: including file: C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\ShowIncludes\\foo.h
+        C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\ShowIncludes\\main.c : fatal error C1083: Cannot open compiler generated file: 'C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\ShowIncludes\\main.obj': Permission denied
+        
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:1341 (message)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        main.c
+        Note: including file: C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\ShowIncludes\\foo.h
         
       Found prefix "Note: including file: "
   -
@@ -1416,8 +1429,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-ce7gsa"
-      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-ce7gsa"
+      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-44xwv1"
+      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-44xwv1"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1426,28 +1439,28 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-ce7gsa'
+        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-44xwv1'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_d03cc\\fast
-        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_d03cc.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_d03cc.dir\\build
-        Building C object CMakeFiles/cmTC_d03cc.dir/CMakeCCompilerABI.c.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_d03cc.dir\\CMakeCCompilerABI.c.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ce7gsa" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmD9D0.tmp
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_270cd\\fast
+        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_270cd.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_270cd.dir\\build
+        Building C object CMakeFiles/cmTC_270cd.dir/CMakeCCompilerABI.c.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_270cd.dir\\CMakeCCompilerABI.c.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-44xwv1" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nm3D59.tmp
         CMakeCCompilerABI.c
-        Linking C executable cmTC_d03cc.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_d03cc.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_d03cc.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmDA6E.tmp
+        Linking C executable cmTC_270cd.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_270cd.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_270cd.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nm3F0F.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_d03cc.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_d03cc.dir/embed.manifest
+        Create CMakeFiles\\cmTC_270cd.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_270cd.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_d03cc.dir/manifest.res CMakeFiles\\cmTC_d03cc.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_270cd.dir/manifest.res CMakeFiles\\cmTC_270cd.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_d03cc.dir\\objects1.rsp /out:cmTC_d03cc.exe /implib:cmTC_d03cc.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ce7gsa\\cmTC_d03cc.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_d03cc.dir/intermediate.manifest CMakeFiles\\cmTC_d03cc.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_270cd.dir\\objects1.rsp /out:cmTC_270cd.exe /implib:cmTC_270cd.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-44xwv1\\cmTC_270cd.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_270cd.dir/intermediate.manifest CMakeFiles\\cmTC_270cd.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_d03cc.dir/intermediate.manifest /out:CMakeFiles\\cmTC_d03cc.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_270cd.dir/intermediate.manifest /out:CMakeFiles\\cmTC_270cd.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_d03cc.dir/manifest.res CMakeFiles\\cmTC_d03cc.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_270cd.dir/manifest.res CMakeFiles\\cmTC_270cd.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_d03cc.dir\\objects1.rsp /out:cmTC_d03cc.exe /implib:cmTC_d03cc.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ce7gsa\\cmTC_d03cc.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_d03cc.dir/intermediate.manifest CMakeFiles\\cmTC_d03cc.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_270cd.dir\\objects1.rsp /out:cmTC_270cd.exe /implib:cmTC_270cd.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-44xwv1\\cmTC_270cd.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_270cd.dir/intermediate.manifest CMakeFiles\\cmTC_270cd.dir/manifest.res
         
       exitCode: 0
   -
@@ -1487,8 +1500,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-428dki"
-      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-428dki"
+      source: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-w8ur73"
+      binary: "C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-w8ur73"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1498,28 +1511,28 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-428dki'
+        Change Dir: 'C:/Users/conqu/Desktop/Umar/Workspace/Zenith Hack/build/CMakeFiles/CMakeScratch/TryCompile-w8ur73'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_9b71a\\fast
-        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_9b71a.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_9b71a.dir\\build
-        Building CXX object CMakeFiles/cmTC_9b71a.dir/CMakeCXXCompilerABI.cpp.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_9b71a.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-428dki" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmE0F4.tmp
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_36070\\fast
+        	"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_36070.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_36070.dir\\build
+        Building CXX object CMakeFiles/cmTC_36070.dir/CMakeCXXCompilerABI.cpp.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_36070.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w8ur73" --filter-prefix="Note: including file: " -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\conqu\\AppData\\Local\\Temp\\nm42E7.tmp
         CMakeCXXCompilerABI.cpp
-        Linking CXX executable cmTC_9b71a.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_9b71a.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_9b71a.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nmE1C1.tmp
+        Linking CXX executable cmTC_36070.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\\cmTC_36070.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_36070.dir\\objects1.rsp @C:\\Users\\conqu\\AppData\\Local\\Temp\\nm4374.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_9b71a.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_9b71a.dir/embed.manifest
+        Create CMakeFiles\\cmTC_36070.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_36070.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_9b71a.dir/manifest.res CMakeFiles\\cmTC_9b71a.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_36070.dir/manifest.res CMakeFiles\\cmTC_36070.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_9b71a.dir\\objects1.rsp /out:cmTC_9b71a.exe /implib:cmTC_9b71a.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-428dki\\cmTC_9b71a.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_9b71a.dir/intermediate.manifest CMakeFiles\\cmTC_9b71a.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_36070.dir\\objects1.rsp /out:cmTC_36070.exe /implib:cmTC_36070.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w8ur73\\cmTC_36070.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_36070.dir/intermediate.manifest CMakeFiles\\cmTC_36070.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_9b71a.dir/intermediate.manifest /out:CMakeFiles\\cmTC_9b71a.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_36070.dir/intermediate.manifest /out:CMakeFiles\\cmTC_36070.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_9b71a.dir/manifest.res CMakeFiles\\cmTC_9b71a.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_36070.dir/manifest.res CMakeFiles\\cmTC_36070.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_9b71a.dir\\objects1.rsp /out:cmTC_9b71a.exe /implib:cmTC_9b71a.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-428dki\\cmTC_9b71a.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_9b71a.dir/intermediate.manifest CMakeFiles\\cmTC_9b71a.dir/manifest.res
+        C:\\PROGRA~2\\MICROS~3\\2022\\BUILDT~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_36070.dir\\objects1.rsp /out:cmTC_36070.exe /implib:cmTC_36070.lib /pdb:C:\\Users\\conqu\\Desktop\\Umar\\Workspace\\Zenith Hack\\build\\CMakeFiles\\CMakeScratch\\TryCompile-w8ur73\\cmTC_36070.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_36070.dir/intermediate.manifest CMakeFiles\\cmTC_36070.dir/manifest.res
         
       exitCode: 0
   -
