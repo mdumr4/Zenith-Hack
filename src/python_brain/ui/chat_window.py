@@ -548,10 +548,34 @@ class ChatWindow(QMainWindow):
         QTimer.singleShot(1000, self.finish_insert)
 
     def finish_insert(self):
-        print(f"INSERTING: {self.ai_text.full_text}")
-        # self.hide_chat()  <-- User requested NOT to close
-        # Reset button style for next time
+        text = self.ai_text.full_text
+        if not text: return
+
+        # 1. Copy to Clipboard
+        cb = QApplication.clipboard()
+        cb.setText(text)
+
+        # 2. Hide Window (Restores focus to previous app usually)
+        self.hide_chat()
+
+        # 3. Simulate Ctrl+V after brief delay for focus switch
+        QTimer.singleShot(200, self.perform_paste)
+
+        # Reset button style
         QTimer.singleShot(500, lambda: self.reset_insert_btn())
+
+    def perform_paste(self):
+        import ctypes
+
+        # Simulate Ctrl+V
+        VK_CONTROL = 0x11
+        VK_V = 0x56
+        KEYEVENTF_KEYUP = 0x0002
+
+        ctypes.windll.user32.keybd_event(VK_CONTROL, 0, 0, 0)
+        ctypes.windll.user32.keybd_event(VK_V, 0, 0, 0)
+        ctypes.windll.user32.keybd_event(VK_V, 0, KEYEVENTF_KEYUP, 0)
+        ctypes.windll.user32.keybd_event(VK_CONTROL, 0, KEYEVENTF_KEYUP, 0)
 
     def reset_insert_btn(self):
         self.btn_insert.setText("Insert")
