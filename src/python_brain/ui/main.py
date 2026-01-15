@@ -44,7 +44,6 @@ def start_ui():
             # TEAM C CONTRACT: Poll /ui/state
             state = client.poll_state()
             if state:
-                # Update Overlay
                 if "ghost_text" in state:
                     overlay.update_state(
                         x=state.get("x", 0),
@@ -71,6 +70,8 @@ def start_ui():
 
     # Show overlay (it starts hidden/transparent but needs to be "active")
     # overlay.show() # DISABLED
+
+    print("[INFO] Starting UI Overlay (HighDPI Enabled)...")
 
     sys.exit(app.exec())
 

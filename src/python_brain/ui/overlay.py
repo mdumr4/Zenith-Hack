@@ -30,30 +30,24 @@ class GhostTextLabel(QLabel):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setObjectName("GhostTextLabel")
-        self.setContentsMargins(0, 0, 0, 0)
+        self.setContentsMargins(4, 2, 4, 2)
 
-        # Fixed stylesheet with Windows font fixes
-        self.setStyleSheet("""
-            QLabel#GhostTextLabel {
-                color: #000000;  /* Pure Black */
-                background-color: transparent;
-                padding: 0px;
-                margin: 0px;
-                border: none;
-                font-family: 'Consolas', 'Courier New', monospace;
-                font-size: 11pt;
-                font-style: italic;
-                font-weight: 400;
-                qproperty-alignment: AlignLeft | AlignVCenter;
-            }
-        """)
-        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
+        # Use QPalette for robust coloring instead of stylesheets
+        palette = self.palette()
+        palette.setColor(QPalette.ColorRole.Window, QColor("#EEEEEE")) # Light Gray BG
+        palette.setColor(QPalette.ColorRole.WindowText, QColor("#000000")) # Black Text
+        self.setPalette(palette)
 
-        # Critical: Disable smoothing/hinting for crisp monospace in overlays
-        font = self.font()
-        font.setHintingPreference(QFont.HintingPreference.PreferNoHinting)
-        font.setStyleStrategy(QFont.StyleStrategy.NoAntialias)
+        self.setAutoFillBackground(True) # Paint the background!
+
+        # Font Setup
+        font = QFont("Consolas", 11)
+        font.setStyleHint(QFont.StyleHint.Monospace)
+        font.setItalic(True)
         self.setFont(font)
+
+        self.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
+        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents)
 
 class OverlayWindow(QMainWindow):
     def __init__(self):

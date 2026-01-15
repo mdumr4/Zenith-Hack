@@ -37,8 +37,11 @@ REM 1. Register the IME DLL (Requires Admin)
 echo [INFO] Registering IME...
 set "DLL_PATH=build\FraiIME.dll"
 if exist "build\Release\FraiIME.dll" set "DLL_PATH=build\Release\FraiIME.dll"
-REM Prefer the one in root build if it is newer (simple check: if root exists use it, copy might have failed)
-if exist "build\FraiIME.dll" set "DLL_PATH=build\FraiIME.dll"
+REM Prefer the one in root (Deployed)
+set "DLL_PATH=FraiIME.dll"
+if not exist "%DLL_PATH%" (
+    if exist "build\Release\FraiIME.dll" set "DLL_PATH=build\Release\FraiIME.dll"
+)
 
 if exist "%DLL_PATH%" (
     echo [INFO] Found DLL at: %DLL_PATH%
